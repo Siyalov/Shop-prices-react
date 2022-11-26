@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import api, { ProductResponse } from "../Api/api"
+import api, { ProductsResponse } from "../Api/api"
 
 export default function Catalog() {
-   const [products, setProducts] = useState<ProductResponse>();
+   const [products, setProducts] = useState<ProductsResponse>();
 
    async function loadProducts() {
       const data = await api.getProducts();

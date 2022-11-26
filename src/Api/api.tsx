@@ -7,6 +7,9 @@ import {
   ServerErrorResponse,
 } from "./server.typings";
 
+export type ProductsResponse = PaginatedResponse<Product>;
+export type ShopsResponse = PaginatedResponse<Shop>;
+
 interface GetProductsOptions {
   /** отображать баркоды в ответе */
   barcodes?: boolean;
@@ -64,7 +67,7 @@ export class API {
     }
 
     if (response.ok) {
-      const data: PaginatedResponse<Product> = await response.json();
+      const data: ProductsResponse = await response.json();
       return data;
     } else {
       const data: ServerErrorResponse = await response.json();
@@ -121,7 +124,7 @@ export class API {
       throw new Error("Server response does not contain JSON!");
     }
 
-    const data: PaginatedResponse<Shop> = await response.json();
+    const data: ShopsResponse = await response.json();
     return data;
   }
 
