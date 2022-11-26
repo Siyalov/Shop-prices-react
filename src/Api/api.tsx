@@ -98,7 +98,7 @@ export class API {
     if (!product.barcodes?.length) {
       return "";
     }
-    const ean = product.barcodes[0];
+    const ean = product.barcodes[0].barcode;
     return new URL(`${backendURL}/images/static/${ean}`).toString();
   }
 
