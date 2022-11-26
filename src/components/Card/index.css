@@ -4,9 +4,27 @@
    padding: 8px;
    display: grid;
    gap: 10px;
+   transition: box-shadow 0.2s, transform 0.2s;
+   box-shadow: rgb(24, 6, 157) 0px 0px 8px;
+   transform: scale(1);
+}
+
+.card:hover {
+   box-shadow: rgb(24, 6, 157) 0px 0px 16px;
+   transform: scale(1.1);
 }
  
 .card__img {
    height: 240px;
    background: no-repeat center / contain;
+}
+
+.card__text {
+   /* font-size: 12px; */
+   /* text-overflow: ellipsis;
+   white-space: nowrap;  
+   overflow: hidden; */
+}
+
+.card__header {
 }
