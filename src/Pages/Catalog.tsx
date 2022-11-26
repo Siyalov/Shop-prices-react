@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api, { ProductsResponse } from "../Api/api"
+import Card from "../components/Card";
 
 export default function Catalog() {
    const [products, setProducts] = useState<ProductsResponse>();
@@ -16,12 +17,14 @@ export default function Catalog() {
 
    return <>
       {products?.page}<br/>
-      {products?.entries
-         ? products?.entries.map(product => 
-            <> {product.name}<br/> </>
-         )
-         : 'Данные загружаются, подождите..'
-      }
+      <div className="cards-container">
+         {products?.entries
+            ? products?.entries.map(product => 
+               <Card product={product} />
+            )
+            : 'Данные загружаются, подождите..'
+         }
+      </div>
    </>
 
 }

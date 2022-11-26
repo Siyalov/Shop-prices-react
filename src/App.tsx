@@ -1,7 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Catalog from './Pages/Catalog';
+
+import "./index.css" 
 
 function App() {
   return (
