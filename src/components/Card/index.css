@@ -1,0 +1,12 @@
+.card {
+   border: 1px solid var(--main-color);
+   border-radius: 8px;
+   padding: 8px;
+   display: grid;
+   gap: 10px;
+}
+ 
+.card__img {
+   height: 240px;
+   background: no-repeat center / contain;
+}
