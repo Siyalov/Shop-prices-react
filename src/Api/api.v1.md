@@ -14,6 +14,8 @@
 | PUT `/products/:id` | yes | update existed product (diff) |
 | DELETE `/products/:id` | yes | delete existed product (mark as hidden) |
 ||
+| GET `/images/static/:ean` | | get image by ean barcode |
+||
 | GET `/shops` | | get list of shops |
 | GET `/shops/:id` | | get shop info (+all products) |
 | GET `/shops/:id/products` | | get shop products |
@@ -328,6 +330,21 @@ Requires:
 * Authorization
 
 Response status code: `204` (`No Content`)
+
+### Images
+
+#### Get image (by product EAN barcode)
+
+HTTP Method: `GET`
+
+Path: `/images/static/:ean`
+
+Parameters:
+* `:ean` - EAN barcode
+
+Response status code: `200` (`OK`)
+
+Response body: `raw image in jpg/png`
 
 ### Shops
 
