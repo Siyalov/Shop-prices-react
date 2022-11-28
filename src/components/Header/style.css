@@ -1,5 +1,30 @@
 .header {
-   width: 100vw;
-   height: 10vh;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;  
+   height: 70px;
    background-color: blue;
+   /* padding: 16px calc(50% - 500px); */
+}
+.header > div {
+   display: flex;
+   height: 100%;
+}
+.logo img {
+   margin: 4px;
+   height: calc(100% - 8px);
+}
+input {
+   width: 40%;
+   min-width: 100px;
+   height: 30px;
+   border-radius: 20px;
+   border: solid 1px rgba(0, 0, 0, 0.5);
+   outline: none;
+   padding: 4px;
+}
+.buttons {
+   align-items: center;
+   padding: 8px;
 }

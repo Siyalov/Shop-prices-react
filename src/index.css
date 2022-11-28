@@ -21,3 +21,8 @@ code {
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
+@media (max-width: 720px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
