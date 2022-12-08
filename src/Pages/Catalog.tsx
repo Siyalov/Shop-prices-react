@@ -12,7 +12,7 @@ export default function Catalog({
    searchQuery: string,
 }) {
    return <>   
-      {products?.page}<br/>
+      {products?.page} из {Math.floor((products?.count || 0) / (products?.pageSize || 0))}<br/>
       <div>
          <button onClick={() => setPage(Math.max(products?.page as number - 1, 0))}>назад</button>
          <button onClick={() => setPage(products?.page as number + 1)}>вперед</button>
