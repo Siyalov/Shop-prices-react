@@ -8,6 +8,8 @@ import Header from './components/Header';
 import api, { ProductsResponse } from './Api/api';
 
 const path = "/";
+// show only Kristiinankaupunki shops
+const shops = '15563156-f682-4ca1-9cf0-e7c4e1430a0e,511799ba-1af8-4a58-88da-5ce686ea3937';
 
 function App() {
   const [ products, setProducts ] = useState<ProductsResponse>();
@@ -21,12 +23,14 @@ function App() {
          page: page,
          pageSize: 40,
          q: searchQuery,
+         shopId: shops
       });
       setProducts(data);
     } else {
       const data = await api.getProducts({
         page: page,
         pageSize: 40,
+        shopId: shops
       });
       setProducts(data);
     }
