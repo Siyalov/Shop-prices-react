@@ -18,22 +18,26 @@ function App() {
 
   async function loadProducts() {
     console.log(searchQuery);
+    let data: ProductsResponse;
     if (searchQuery) {
-      const data = await api.getProducts({
+      data = await api.getProducts({
          page: page,
          pageSize: 40,
          q: searchQuery,
          shopId: shops
       });
-      setProducts(data);
     } else {
-      const data = await api.getProducts({
+      data = await api.getProducts({
         page: page,
         pageSize: 40,
         shopId: shops
       });
-      setProducts(data);
     }
+    // sort price
+    for (const product of data.entries) {
+      product.prices = product.prices?.sort((a, b) => a.price - b.price);
+    }
+    setProducts(data);
   }
 
   useEffect(() => {
@@ -51,7 +55,7 @@ function App() {
     <>
       <Header setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
       <Routes>
-        <Route path={path} element={<Catalog products={products} setPage={setPage} />} />
+        <Route path={path} element={<Catalog products={products} setPage={setPage} searchQuery={searchQuery} />} />
         {/* <Route path={path + "favorites"} element={<Main goods={fav} api={api} setFav={setFav} user={user} />} />
         <Route path={path + "product/:id"} element={<Product api={api} />} />
         <Route path={path + "profile"} element={<Profile user={user} />} /> */}

@@ -5,9 +5,11 @@ import Card from "../components/Card";
 export default function Catalog({
    products,
    setPage,
+   searchQuery,
 }: {
    products: ProductsResponse | undefined,
    setPage: (n: number) => void,
+   searchQuery: string,
 }) {
    return <>   
       {products?.page}<br/>
@@ -18,7 +20,7 @@ export default function Catalog({
       <div className="cards-container">
          {products?.entries
             ? products?.entries.map(product => 
-               <Card product={product} />
+               <Card product={product} searchQuery={searchQuery} />
             )
             : 'Данные загружаются, подождите..'
          }
