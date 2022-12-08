@@ -5,25 +5,50 @@ export interface Product {
   hidden: boolean;
   /** наименование */
   name: string;
+  /** описание
+   * @deprecated
+   */
+  descriptionI18N: string | null
+  /** Цена за ед. измерения: киллограм, литры, шт. */
+  priceUnit: 'KGM' | 'LTR' | 'PCS' | null
+  /** Цена для сравнения: киллограм, литры, шт. */
+  comparisonPriceUnit: 'KGM' | 'LTR' | 'PCS' | null
+  /** идентификатор категории */
+  categoryId: string | null
   /** дата и время создания, например `2012-12-31T23:59:59.123Z` */
   createdAt: string;
   /** дата и время изменения, например `2012-12-31T23:59:59.123Z` */
   updatedAt: string;
+  /** локализованные имена(перевод) */
+  names: Array<{
+    id: string
+    refId?: string
+    /** язык перевода */
+    lang: 'en' | 'fi' | 'sw' | 'ru'
+    /** значение перевода */
+    value: string  
+  }>
   /** цены товаров (только актуальные) */
   prices?: Array<{
     /** идентификатор ценника */
     id: string;
     /** цена */
     price: number;
+    /** цена для сравнения*/
+    comparisonPrice: number | null;
     /** идентификатор магазина */
     shopId: string;
     /** дата и время изменения, например `2012-12-31T23:59:59.123Z` */
     updatedAt: string;
+    /** наименование магазина */
+    shopName: string
   }>;
   /** баркоды (штрихкоды) товаров */
   barcodes?: Array<{
     /** идентификатор штрихкода */
     id: string;
+    /** тип штрихкода, `ean` - европейский штрихкод */
+    type: string
     /** штрихкод */
     barcode: string;
     /** дата и время изменения, например `2012-12-31T23:59:59.123Z` */
@@ -35,7 +60,37 @@ export interface Product {
     id: string;
     /** наименование магазина */
     name: string;
+    /** скрытое или нет */
+    hidden: boolean
+    /** страна магазина */
+    country: string
+    /** город магазина */
+    city: string
+    /** адрес магазина */
+    address: string
+    /** географическая широта */
+    lat: number
+    /** географическая долгота */
+    lon: number
+    /** создано- когда, например `2012-12-31T23:59:59.123Z` */
+    createdAt: string
+    /** обновлено - когда, например `2012-12-31T23:59:59.123Z` */
+    updatedAt: string
   }>;
+  measurements: null | {
+    id: string
+    productId: string
+    width: number
+    height: number
+    length: number
+    netWeight: number
+    /** количество единиц измерения */
+    contentSize: number
+    /** единица измерения упаковки */
+    contentUnit: 'KGM' | 'LTR' | 'PCS' | null
+  }
+  barcode: string
+  images: Array<string>
 }
 
 export interface PaginatedResponse<T = any> {
@@ -43,6 +98,8 @@ export interface PaginatedResponse<T = any> {
   page: number;
   /** размер страницы (количество элементов в entries) */
   pageSize: number;
+  /** количество элементов всего */
+  count: number;
   /** элементы страницы */
   entries: Array<T>;
 }
@@ -75,6 +132,7 @@ export interface Shop {
   updatedAt: string;
 }
 
+// TODO: api v2 types
 export interface ShopWithProducts extends Shop {
   products: Array<{
     /** идентификатор товара */

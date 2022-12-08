@@ -11,24 +11,21 @@ export type ProductsResponse = PaginatedResponse<Product>;
 export type ShopsResponse = PaginatedResponse<Shop>;
 
 interface GetProductsOptions {
-  /** отображать баркоды в ответе */
-  barcodes?: boolean;
-  /** отображать цены в ответе */
-  prices?: boolean;
-  /** отображать магазины в ответе */
-  shops?: boolean;
   /** строка поиска */
   q?: string;
   /** номер страницы для пагинации */
   page?: number;
   /** количество продуктов на странице */
   pageSize?: number;
+  /** идентификатор магазина, может быть несколько (через запятую, например: `123,456,789`) */
+  shopId?: string
   /** порядок сортировки (desc - от Я до А, asc - от А до Я, по умолчанию - desc) */
-  order?: "DESC" | "ASC" | "asc" | "desc";
+  // order?: "DESC" | "ASC" | "asc" | "desc";
   /** поле сортировки (по умолчанию - createdAt) */
-  sortBy?: "id" | "hidden" | "name" | "createdAt" | "updatedAt";
+  // sortBy?: "id" | "hidden" | "name" | "createdAt" | "updatedAt";
 }
 
+/** @deprecated */
 interface GetShopsOptions {
   /** строка поиска */
   q?: string;
@@ -48,9 +45,6 @@ export class API {
    */
   async getProducts(options: GetProductsOptions = {}) {
     const url = new URL(`${backendURL}/products`);
-    url.searchParams.set("barcodes", "");
-    url.searchParams.set("shops", "");
-    url.searchParams.set("prices", "");
     if (options) {
       for (const key in options) {
         url.searchParams.set(
@@ -99,7 +93,7 @@ export class API {
       return "";
     }
     const ean = product.barcodes[0].barcode;
-    return new URL(`${backendURL}/images/static/${ean}`).toString();
+    return new URL(`${backendURL}/../v1/images/static/${ean}`).toString();
   }
 
   /**
