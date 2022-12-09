@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Button, ButtonGroup } from "react-bootstrap";
 import api, { ProductsResponse } from "../Api/api"
 import Card from "../components/Card";
+
 
 export default function Catalog({
    products,
@@ -13,10 +15,10 @@ export default function Catalog({
 }) {
    return <>   
       {products?.page} из {Math.floor((products?.count || 0) / (products?.pageSize || 0))}<br/>
-      <div>
-         <button onClick={() => setPage(Math.max(products?.page as number - 1, 0))}>назад</button>
-         <button onClick={() => setPage(products?.page as number + 1)}>вперед</button>
-      </div>
+      <ButtonGroup>
+         <Button onClick={() => setPage(Math.max(products?.page as number - 1, 0))}>назад</Button>
+         <Button onClick={() => setPage(products?.page as number + 1)}>вперед</Button>
+      </ButtonGroup>
       <div className="cards-container">
          {products?.entries
             ? products?.entries.map(product => 

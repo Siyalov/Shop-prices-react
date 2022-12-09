@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import api from "../../Api/api";
 import { Product } from "../../Api/server.typings";
-import "./index.css"
-
+import "./index.scss"
+import { path } from "../../settings";
 
 
 export default function Card({ product, searchQuery }: { product: Product, searchQuery: string }) {
    const idx = product.name.indexOf(searchQuery);
    return (
-      <div className="card">
+      <Link to={path + 'product/' + product.id} className="card">
          <div className="card__header"></div>
          <div className="card__img" style={{
             backgroundImage: `url(${api.getProductImageURL(product)})`
@@ -31,6 +32,6 @@ export default function Card({ product, searchQuery }: { product: Product, searc
                {product.name.slice(idx + searchQuery.length)}
             </>
          }</div>
-      </div>
+      </Link>
    )
 }

@@ -77,8 +77,16 @@ export class API {
   /**
    * Получение существующего товара
    */
-  async getProduct(id: string) {
+  async getProduct(id: string, options?: { shopId: string }) {
     const url = new URL(`${backendURL}/products/${id}`);
+    if (options) {
+      for (const key in options) {
+        url.searchParams.set(
+          key,
+          options[key as keyof typeof options]?.toString?.() || ""
+        );
+      }
+    }
 
     const response = await fetch(url);
     const data: Product = await response.json();

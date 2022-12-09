@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Catalog from './Pages/Catalog';
 import { Routes, Route } from 'react-router-dom';
-
+import { path, shops } from './settings';
 import "./index.css" 
 import Header from './components/Header';
 import api, { ProductsResponse } from './Api/api';
-
-const path = "/";
-// show only Kristiinankaupunki shops
-const shops = '15563156-f682-4ca1-9cf0-e7c4e1430a0e,511799ba-1af8-4a58-88da-5ce686ea3937';
+import Product from './Pages/Product';
 
 function App() {
   const [ products, setProducts ] = useState<ProductsResponse>();
@@ -56,8 +53,9 @@ function App() {
       <Header setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
       <Routes>
         <Route path={path} element={<Catalog products={products} setPage={setPage} searchQuery={searchQuery} />} />
+        <Route path={path + "product/:id"} element={<Product />} />
         {/* <Route path={path + "favorites"} element={<Main goods={fav} api={api} setFav={setFav} user={user} />} />
-        <Route path={path + "product/:id"} element={<Product api={api} />} />
+        
         <Route path={path + "profile"} element={<Profile user={user} />} /> */}
       </Routes>
     </>
