@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.9",
     "apexcharts": "^3.36.3",
     "bootstrap": "^5.2.3",
+    "crypto-js": "^4.1.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-bootstrap": "^2.7.0",
@@ -45,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1"
   }
 }

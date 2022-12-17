@@ -7,6 +7,8 @@ import "./index.css"
 import Header from './components/Header';
 import api, { ProductsResponse } from './Api/api';
 import Product from './Pages/Product';
+import Registration from './Pages/Registration';
+import Authorization from './Pages/Authorization';
 
 function App() {
   const [ products, setProducts ] = useState<ProductsResponse>();
@@ -57,7 +59,10 @@ function App() {
         {/* <Route path={path + "favorites"} element={<Main goods={fav} api={api} setFav={setFav} user={user} />} />
         
         <Route path={path + "profile"} element={<Profile user={user} />} /> */}
+        <Route path={path + "register"} element={<Registration />} /> 
+        <Route path={path + "auth"} element={<Authorization />} /> 
       </Routes>
+
     </>
   );
 }
