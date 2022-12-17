@@ -79,9 +79,24 @@ export default function Product() {
   useEffect(() => {
     const shops: { [key: string]: Array<Array<number>> } = {};
     const graphs: ApexAxisChartSeries | ApexNonAxisChartSeries = [];
-       
+    
     for(const price of (product?.prices || [])) {
-      const name = price.shopName || price.shopId
+      let name = price.shopName;
+
+      if (!name) {
+        // if name is not set, search in shops
+        let currentShop;
+        for (const shop of (product?.shops || [])) {
+          if (shop.id === price.shopId) {
+            currentShop = shop;
+            break;
+          }
+        }
+        if (currentShop) {
+          name = currentShop.name;
+        }
+      }
+
       if (!shops[name]) shops[name] = [];
       shops[name].push([
         new Date(price.updatedAt).getTime(),
