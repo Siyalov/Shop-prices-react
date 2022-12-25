@@ -28,3 +28,17 @@ input {
    align-items: center;
    padding: 8px;
 }
+.header-nav{
+   display: flex;
+   gap: 20px;
+   align-items: center;
+   margin-left: 8px;
+}
+.header-nav a {
+   font-size: 2rem;
+   color: white;
+   font-weight: bold;
+}
+.header-nav a:hover {
+   color: lightgrey
+}

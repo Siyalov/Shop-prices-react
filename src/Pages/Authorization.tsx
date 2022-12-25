@@ -3,16 +3,24 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import sha256 from 'crypto-js/sha256'
+import api from '../Api/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function Authorization() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const onAuthorization: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const navigate = useNavigate();
+  const onAuthorization: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault();
-    console.log({
+    const authResult = await api.login({
       username,
       password: sha256(password).toString()
     });
+    if (authResult.token) {
+      api.setToken(authResult.token);
+      // move to main page
+      navigate('/');
+    }
   }
   return <Container>
     <Row className="justify-content-md-center mt-4">

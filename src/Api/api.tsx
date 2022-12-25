@@ -40,6 +40,10 @@ interface GetShopsOptions {
 }
 
 export class API {
+  token?: string | null = null;
+  setToken(token?: string | null) {
+    this.token = token;
+  }
   /**
    * Получение списка товаров с пагинацией
    */
@@ -138,6 +142,60 @@ export class API {
 
     const response = await fetch(url);
     const data: ShopWithProducts = await response.json();
+    return data;
+  }
+  
+  async register(user: { username: string, password: string }) {
+    const url = new URL(`${backendURL}/auth/register`);
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data: { ok: boolean } = await response.json();
+    return data;
+  }
+
+  async login(user: { username: string, password: string }) {
+    const url = new URL(`${backendURL}/auth/login`);
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data: { token?: string } = await response.json();
+    return data;
+  }
+  
+  async logout() {
+    const url = new URL(`${backendURL}/auth/logout`);
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    });
+    const data: {} = await response.json();
+    return data;
+  }
+  
+  async whoami() {
+    const url = new URL(`${backendURL}/auth/whoami`);
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    });
+    const data: { username: string } = await response.json();
     return data;
   }
 }
