@@ -186,20 +186,19 @@ export default function Product() {
                     <tr>
                       <th>Цена</th>
                       <th>
-                        <table>
+                        <Table>
                           {
                             product.shops?.map((shop) => {
                               if (!shops.includes(shop.id)) return '';
                               const price = getLastShopPrice(product, shop.id);
                               return <tr>
-                                <td>{price?.price.toFixed(2)} €</td>
-                                <td></td>
-                                <td>{shop.name}</td>
-                                <td>{((price?.price || 0) * cnt).toFixed(2)} €</td>
+                                <td className="col-2">{price?.price.toFixed(2)} €</td>
+                                <td className="col-8">{shop.name}</td>
+                                <td className="col-2">{((price?.price || 0) * cnt).toFixed(2)} €</td>
                               </tr>
                             })
                           }
-                        </table>
+                        </Table>
                       </th>
                       {/* <th>{product.price} ₽ за 100 грамм</th> */}
                     </tr>
