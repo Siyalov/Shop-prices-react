@@ -181,7 +181,7 @@ export default function Product() {
                   <tbody>
                     <tr>
                       <th>Вес</th>
-                      <th>{product.measurements?.netWeight || '???'} кг</th>
+                      <th>{product.measurements?.netWeight || 'coming soon...'} кг</th>
                     </tr>
                     <tr>
                       <th>Цена</th>
