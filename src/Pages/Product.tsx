@@ -27,8 +27,9 @@ async function loadProduct(
 function getLastShopPrice(product: ProductType, shopId: string) {
   const shopPrices = product.prices?.filter((price) => price.shopId === shopId);
   shopPrices?.sort(
-    (a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   );
+  console.log(shopPrices);
   return shopPrices?.[0];
 }
 
@@ -182,6 +183,10 @@ export default function Product() {
                     <tr>
                       <th>Вес</th>
                       <th>{product.measurements?.netWeight || 'coming soon...'} кг</th>
+                    </tr>
+                    <tr>
+                      <th>Баркод</th>
+                      <th>{product.barcode || 'coming soon...'} </th>
                     </tr>
                     <tr>
                       <th>Цена</th>
