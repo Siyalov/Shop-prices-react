@@ -29,6 +29,16 @@
    }
 
    .card__header {
+      position: relative;
+   }
+   .card__like {
+      position: absolute;
+      right: 0;
+      color: rgba(255,0,0,0.4);
+      font-size: 1.5rem;
+   }
+   .card__like:hover {
+      color: red;
    }
    .card__searchMatch {
       text-decoration: underline;

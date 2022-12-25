@@ -4,13 +4,19 @@ import api from "../../Api/api";
 import { Product } from "../../Api/server.typings";
 import "./index.scss"
 import { path } from "../../settings";
+import { EmojiHeartEyes, EmojiHeartEyesFill, ArrowThroughHeart, ArrowThroughHeartFill } from 'react-bootstrap-icons';
 
 
 export default function Card({ product, searchQuery }: { product: Product, searchQuery: string }) {
    const idx = product.name.indexOf(searchQuery);
+   const like = true;
    return (
       <Link to={path + 'product/' + product.id} className="card">
-         <div className="card__header"></div>
+         <div className="card__header">
+            <span className="card__like">
+               {like ? <ArrowThroughHeartFill /> : <ArrowThroughHeart/>}
+            </span>
+         </div>
          <div className="card__img" style={{
             backgroundImage: `url(${api.getProductImageURL(product)})`
          }} ></div>
