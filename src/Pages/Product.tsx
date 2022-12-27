@@ -12,8 +12,7 @@ import {
   Table,
   ButtonGroup,
   Button,
-  Alert,
-} from "react-bootstrap";
+  } from "react-bootstrap";
 import { shops } from '../settings';
 
 async function loadProduct(
