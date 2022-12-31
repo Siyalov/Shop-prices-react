@@ -24,10 +24,10 @@
 ![Register](docs/Register.png)
 
 ### Карточка товара
-![Register](docs/Product.png)
+![Product](docs/Product.png)
 
 ### Добавлены лайки и иконки регистрации, входа/выхода 
 ![Icons](docs/Icons.png)
 
-### Добавлены лайки 
-![Icons](docs/Icons.png)
+### Добавлена пагинация 
+![Pagination](docs/Pagination.png)
