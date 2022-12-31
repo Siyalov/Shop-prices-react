@@ -85,7 +85,7 @@ function App() {
       totalPages,
       setTotalPages,
     }}>
-      <Header setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
+      <Header />
       <Routes>
         <Route path={path} element={<Catalog />} />
         <Route path={path + "product/:id"} element={<Product />} />

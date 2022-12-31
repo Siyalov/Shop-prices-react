@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./img/Cittaslow_logo.png";
 import "./style.css";
 import { BoxArrowDownLeft, BoxArrowInDownLeft, PersonPlusFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { Context } from "../../App";
 
-export default function Header({
-  setSearchQuery,
-  searchQuery,
-}: {
-  setSearchQuery: (text: string) => void;
-  searchQuery: string;
-}) {
+export default function Header() {
+  const { searchQuery, setSearchQuery } = useContext(Context);
+
   const handler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchQuery(e.target.value);
   };
