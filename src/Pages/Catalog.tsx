@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import api, { ProductsResponse } from "../Api/api"
+import { Context } from "../App";
 import Card from "../components/Card";
 
 
-export default function Catalog({
-   products,
-   setPage,
-   searchQuery,
-}: {
-   products: ProductsResponse | undefined,
-   setPage: (n: number) => void,
-   searchQuery: string,
-}) {
+export default function Catalog() {
+   const { products, searchQuery, setPage } = useContext(Context);
    return <>   
       {products?.page} из {Math.floor((products?.count || 0) / (products?.pageSize || 0))}<br/>
       <ButtonGroup>

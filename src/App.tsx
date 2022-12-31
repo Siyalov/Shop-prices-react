@@ -10,6 +10,19 @@ import Product from './Pages/Product';
 import Registration from './Pages/Registration';
 import Authorization from './Pages/Authorization';
 
+export interface ShopPricesContext {
+  products: ProductsResponse | undefined,
+  setProducts: React.Dispatch<React.SetStateAction< ProductsResponse | undefined >>
+
+  searchQuery: string,
+  setSearchQuery: React.Dispatch<React.SetStateAction< string >>
+
+  page: number,
+  setPage: React.Dispatch<React.SetStateAction< number >>
+}
+
+export const Context = React.createContext<ShopPricesContext>({} as ShopPricesContext);
+
 function App() {
   const [ products, setProducts ] = useState<ProductsResponse>();
   const [ page, setPage ] = useState(0);
@@ -51,10 +64,17 @@ function App() {
   }, [searchQuery]);
 
   return (
-    <>
+    <Context.Provider value={{
+      products,
+      setProducts,
+      searchQuery,
+      setSearchQuery,
+      page,
+      setPage
+    }}>
       <Header setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
       <Routes>
-        <Route path={path} element={<Catalog products={products} setPage={setPage} searchQuery={searchQuery} />} />
+        <Route path={path} element={<Catalog />} />
         <Route path={path + "product/:id"} element={<Product />} />
         {/* <Route path={path + "favorites"} element={<Main goods={fav} api={api} setFav={setFav} user={user} />} />
         
@@ -62,8 +82,7 @@ function App() {
         <Route path={path + "register"} element={<Registration />} /> 
         <Route path={path + "auth"} element={<Authorization />} /> 
       </Routes>
-
-    </>
+    </Context.Provider>
   );
 }
 
