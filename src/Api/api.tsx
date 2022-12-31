@@ -101,6 +101,9 @@ export class API {
    * Получение ссылки на картинку товара
    */
   getProductImageURL(product: Product) {
+    if(product.images && product.images.length > 0) {
+      return new URL(product.images[0], backendURL).toString();
+    }
     if (!product.barcodes?.length) {
       return "";
     }
