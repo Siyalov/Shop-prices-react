@@ -19,6 +19,9 @@ export interface ShopPricesContext {
 
   page: number,
   setPage: React.Dispatch<React.SetStateAction< number >>
+
+  totalPages: number,
+  setTotalPages: React.Dispatch<React.SetStateAction< number >>
 }
 
 export const Context = React.createContext<ShopPricesContext>({} as ShopPricesContext);
@@ -26,11 +29,13 @@ export const Context = React.createContext<ShopPricesContext>({} as ShopPricesCo
 function App() {
   const [ products, setProducts ] = useState<ProductsResponse>();
   const [ page, setPage ] = useState(0);
+  const [ totalPages, setTotalPages ] = useState(0);
   const [ searchQuery, setSearchQuery ] = useState('');
 
   async function loadProducts() {
     console.log(searchQuery);
     let data: ProductsResponse;
+    setProducts(undefined);
     if (searchQuery) {
       data = await api.getProducts({
          page: page,
@@ -63,6 +68,12 @@ function App() {
     setPage(0);
   }, [searchQuery]);
 
+  useEffect(() => {
+    if (products) {
+      setTotalPages(Math.floor((products?.count || 0) / (products?.pageSize || 1)));
+    }
+  }, [products]);
+
   return (
     <Context.Provider value={{
       products,
@@ -70,7 +81,9 @@ function App() {
       searchQuery,
       setSearchQuery,
       page,
-      setPage
+      setPage,
+      totalPages,
+      setTotalPages,
     }}>
       <Header setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
       <Routes>
