@@ -9,6 +9,7 @@ import api, { ProductsResponse } from './Api/api';
 import Product from './Pages/Product';
 import Registration from './Pages/Registration';
 import Authorization from './Pages/Authorization';
+import { User } from './Api/server.typings';
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined,
@@ -22,6 +23,8 @@ export interface ShopPricesContext {
 
   totalPages: number,
   setTotalPages: React.Dispatch<React.SetStateAction< number >>
+  setToken: React.Dispatch<React.SetStateAction<string>>
+  user: User | null
 }
 
 export const Context = React.createContext<ShopPricesContext>({} as ShopPricesContext);
@@ -31,6 +34,9 @@ function App() {
   const [ page, setPage ] = useState(0);
   const [ totalPages, setTotalPages ] = useState(0);
   const [ searchQuery, setSearchQuery ] = useState('');
+  const [ token, setToken ] = useState(localStorage.getItem('shop-prices-token') || '');
+  const [ user, setUser ] = useState<User | null>(null);
+  // api.setToken(token);
 
   async function loadProducts() {
     console.log(searchQuery);
@@ -74,6 +80,12 @@ function App() {
     }
   }, [products]);
 
+  useEffect(() => {
+    localStorage.setItem('shop-prices-token', token);
+    api.setToken(token);
+    api.whoami().then(setUser);
+  }, [token]);
+
   return (
     <Context.Provider value={{
       products,
@@ -84,6 +96,8 @@ function App() {
       setPage,
       totalPages,
       setTotalPages,
+      setToken,
+      user,
     }}>
       <Header />
       <Routes>

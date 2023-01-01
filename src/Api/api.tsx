@@ -5,6 +5,7 @@ import {
   Shop,
   ShopWithProducts,
   ServerErrorResponse,
+  User,
 } from "./server.typings";
 
 export type ProductsResponse = PaginatedResponse<Product>;
@@ -158,8 +159,12 @@ export class API {
         'Content-Type': 'application/json',
       }
     });
-    const data: { ok: boolean } = await response.json();
-    return data;
+    if(response.ok) {
+      const data: { ok: boolean } = await response.json();
+      return data;
+    } else {
+      return { ok: false };
+    }
   }
 
   async login(user: { username: string, password: string }) {
@@ -185,8 +190,12 @@ export class API {
         'Authorization': 'Bearer ' + this.token,
       }
     });
-    const data: {} = await response.json();
-    return data;
+    // const data: {} = await response.json();
+    if (response.ok) {
+      return true;
+    } else {
+      return false;
+    }
   }
   
   async whoami() {
@@ -198,8 +207,12 @@ export class API {
         'Authorization': 'Bearer ' + this.token,
       }
     });
-    const data: { username: string } = await response.json();
-    return data;
+    if(response.ok) {
+      const data: User = await response.json();
+      return data;
+    } else {
+      return null;
+    }
   }
 }
 

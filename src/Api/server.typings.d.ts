@@ -150,3 +150,7 @@ export interface ShopWithProducts extends Shop {
     }>;
   }>;
 }
+
+export interface User {
+  username: string;
+}

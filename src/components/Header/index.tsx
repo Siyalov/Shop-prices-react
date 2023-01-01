@@ -4,9 +4,10 @@ import "./style.css";
 import { BoxArrowDownLeft, BoxArrowInDownLeft, PersonPlusFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { Context } from "../../App";
+import api from "../../Api/api";
 
 export default function Header() {
-  const { searchQuery, setSearchQuery } = useContext(Context);
+  const { searchQuery, setSearchQuery, setToken, user } = useContext(Context);
 
   const handler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchQuery(e.target.value);
@@ -19,6 +20,11 @@ export default function Header() {
   //    setUser({});
   //    navigate(path);
   // }
+  // 
+  async function logOut() {
+    await api.logout();
+    setToken('');
+  }
 
   return (
     <div className="header">
@@ -30,15 +36,15 @@ export default function Header() {
       <input type="search" value={searchQuery} onChange={handler} />
       <div className="buttons">
         <nav className="header-nav">
-          <Link to={"/register"}>
+          {!user ? <Link to={"/register"}>
             <PersonPlusFill />
-          </Link>
-          <Link to={"/auth"}>
+          </Link> : '' }
+          {!user ? <Link to={"/auth"}>
             <BoxArrowInDownLeft />
-          </Link>
-          <Link to={"/logout"}>
+          </Link> : '' }
+          {user ? <Link to={""} onClick={logOut}>
             <BoxArrowDownLeft />
-          </Link>
+          </Link> : '' }  
         </nav>
       </div>
     </div>
