@@ -86,6 +86,11 @@ function App() {
     api.whoami().then(setUser);
   }, [token]);
 
+  useEffect(() => {
+    const favorites = goods.filter((product) => product.likes.includes(user._id));
+    setFavorites(favorites);
+  }, [goods]);
+
   return (
     <Context.Provider value={{
       products,
@@ -103,9 +108,13 @@ function App() {
       <Routes>
         <Route path={path} element={<Catalog />} />
         <Route path={path + "product/:id"} element={<Product />} />
-        {/* <Route path={path + "favorites"} element={<Main goods={fav} api={api} setFav={setFav} user={user} />} />
-        
-        <Route path={path + "profile"} element={<Profile user={user} />} /> */}
+        <Route 
+        path={path + "favorites"} 
+        element={<Main goods={fav} 
+        api={api} 
+        setFav={setFav} 
+        user={user} />} />        
+        <Route path={path + "profile"} element={<Profile user={user} />} /> 
         <Route path={path + "register"} element={<Registration />} /> 
         <Route path={path + "auth"} element={<Authorization />} /> 
       </Routes>
