@@ -10,6 +10,7 @@ import Product from './Pages/Product';
 import Registration from './Pages/Registration';
 import Authorization from './Pages/Authorization';
 import { User } from './Api/server.typings';
+import Favorites from './Pages/Favorites';
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined,
@@ -25,6 +26,8 @@ export interface ShopPricesContext {
   setTotalPages: React.Dispatch<React.SetStateAction< number >>
   setToken: React.Dispatch<React.SetStateAction<string>>
   user: User | null
+
+  favorites: Array<string>
 }
 
 export const Context = React.createContext<ShopPricesContext>({} as ShopPricesContext);
@@ -36,6 +39,7 @@ function App() {
   const [ searchQuery, setSearchQuery ] = useState('');
   const [ token, setToken ] = useState(localStorage.getItem('shop-prices-token') || '');
   const [ user, setUser ] = useState<User | null>(null);
+  const [ favorites, setFavorites ] = useState<Array<string>>([]);
   // api.setToken(token);
 
   async function loadProducts() {
@@ -44,10 +48,10 @@ function App() {
     setProducts(undefined);
     if (searchQuery) {
       data = await api.getProducts({
-         page: page,
-         pageSize: 40,
-         q: searchQuery,
-         shopId: shops
+        page: page,
+        pageSize: 40,
+        q: searchQuery,
+        shopId: shops
       });
     } else {
       data = await api.getProducts({
@@ -91,9 +95,8 @@ function App() {
   }, [token]);
 
   useEffect(() => {
-    const favorites = goods.filter((product) => product.likes.includes(user._id));
-    setFavorites(favorites);
-  }, [goods]);
+    api.getLikedProductsId().then((likes) => setFavorites(likes || []));
+  }, [user]);
 
   return (
     <Context.Provider value={{
@@ -107,18 +110,14 @@ function App() {
       setTotalPages,
       setToken,
       user,
+      favorites,
     }}>
       <Header />
       <Routes>
         <Route path={path} element={<Catalog />} />
         <Route path={path + "product/:id"} element={<Product />} />
-        <Route 
-        path={path + "favorites"} 
-        element={<Main goods={fav} 
-        api={api} 
-        setFav={setFav} 
-        user={user} />} />        
-        <Route path={path + "profile"} element={<Profile user={user} />} /> 
+        <Route path={path + "favorites"} element={<Favorites /> } />
+        {/* <Route path={path + "profile"} element={<Profile user={user} />} />  */}
         <Route path={path + "register"} element={<Registration />} /> 
         <Route path={path + "auth"} element={<Authorization />} /> 
       </Routes>

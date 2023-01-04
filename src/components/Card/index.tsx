@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../Api/api";
 import { Product } from "../../Api/server.typings";
 import "./index.scss"
 import { path } from "../../settings";
 import { EmojiHeartEyes, EmojiHeartEyesFill, ArrowThroughHeart, ArrowThroughHeartFill } from 'react-bootstrap-icons';
+import { Context } from "../../App";
 
 
 export default function Card({ product, searchQuery }: { product: Product, searchQuery: string }) {
+   const { favorites } = useContext(Context);
    const idx = product.name.indexOf(searchQuery);
-   const like = true;
+   const [like, setLike] = useState(favorites.includes(product.id));
    return (
       <Link to={path + 'product/' + product.id} className="card">
          <div className="card__header">
-            <span className="card__like">
+            <span className="card__like" onClick={(event) => {
+               event.preventDefault();
+               api.setLike(product.id, !like);
+               setLike(!like);
+            }}>
                {like ? <ArrowThroughHeartFill /> : <ArrowThroughHeart/>}
             </span>
          </div>

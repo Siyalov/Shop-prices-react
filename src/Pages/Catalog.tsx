@@ -16,7 +16,11 @@ export default function Catalog() {
       <div className="cards-container">
          {products?.entries
             ? products?.entries.map(product => 
-               <Card product={product} searchQuery={searchQuery} />
+               <Card 
+                  key={product.id}
+                  product={product}
+                  searchQuery={searchQuery}
+               />
             )
             : 'Данные загружаются, подождите..'
          }
