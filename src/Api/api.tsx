@@ -67,7 +67,13 @@ export class API {
   }
 
   async request<ResSuccess = unknown, ResFail = unknown>(url: string | URL, options?: APIRequestOptions) {
-    const opts: RequestInit = {};
+    const opts: RequestInit = {
+      method: 'GET',
+      headers: {}
+    };
+    if (options?.method) {
+      opts.method = options.method;
+    }
     if (options?.headers) {
       opts.headers = options.headers;
     }
