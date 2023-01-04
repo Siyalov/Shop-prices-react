@@ -38,7 +38,21 @@ input {
    font-size: 2rem;
    color: white;
    font-weight: bold;
+   position: relative;
 }
 .header-nav a:hover {
    color: lightgrey
+}
+.header-nav a span {
+   position: absolute;
+   top: -8px;
+   right: -12px;
+   font-size: large;
+   border-radius: 50%;
+   background: #2502a3;
+   color: white;
+   width: 24px;
+   height: 24px;
+   text-align: center;
+   line-height: 22px;
 }
