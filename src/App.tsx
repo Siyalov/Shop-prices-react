@@ -40,7 +40,7 @@ function App() {
 
   async function loadProducts() {
     console.log(searchQuery);
-    let data: ProductsResponse;
+    let data: ProductsResponse | null;
     setProducts(undefined);
     if (searchQuery) {
       data = await api.getProducts({
@@ -57,10 +57,14 @@ function App() {
       });
     }
     // sort price
-    for (const product of data.entries) {
-      product.prices = product.prices?.sort((a, b) => a.price - b.price);
+    if (data) {
+      for (const product of data.entries) {
+        product.prices = product.prices?.sort((a, b) => a.price - b.price);
+      }
+      setProducts(data);
+    } else {
+      // TODO: handle errors
     }
-    setProducts(data);
   }
 
   useEffect(() => {

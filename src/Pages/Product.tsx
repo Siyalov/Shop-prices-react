@@ -20,7 +20,7 @@ async function loadProduct(
   setProduct: (product: ProductType) => void
 ) {
   const product = await api.getProduct(productId, { shopId: shops });
-  setProduct(product);
+  if (product) setProduct(product);
 }
 
 function getLastShopPrice(product: ProductType, shopId: string) {

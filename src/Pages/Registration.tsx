@@ -25,7 +25,7 @@ export default function Registration() {
         username,
         password: sha256(password).toString()
       });
-      if (authResult.token) {
+      if (authResult?.token) {
         setToken(authResult.token);
         // move to main page
         navigate('/');

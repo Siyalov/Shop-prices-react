@@ -24,6 +24,7 @@ interface GetProductsOptions {
   // order?: "DESC" | "ASC" | "asc" | "desc";
   /** поле сортировки (по умолчанию - createdAt) */
   // sortBy?: "id" | "hidden" | "name" | "createdAt" | "updatedAt";
+  onlyLiked?: boolean
 }
 
 /** @deprecated */
@@ -40,68 +41,105 @@ interface GetShopsOptions {
   sortBy?: "id" | "hidden" | "name" | "createdAt" | "updatedAt";
 }
 
+interface APIRequestOptions {
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'OPTIONS' | 'PATCH';
+  headers?: { [key: string]: string },
+  body?: any,
+}
+
 export class API {
+  tokenPrefix = 'Bearer ';
   token?: string | null = null;
   setToken(token?: string | null) {
     this.token = token;
   }
-  /**
-   * Получение списка товаров с пагинацией
-   */
-  async getProducts(options: GetProductsOptions = {}) {
-    const url = new URL(`${backendURL}/products`);
+
+  _setURLSearchParams<T extends {}>(url: URL, options?: T) {
     if (options) {
       for (const key in options) {
         url.searchParams.set(
           key,
-          options[key as keyof typeof options]?.toString?.() || ""
+          options[key as keyof T]?.toString?.() || ""
         );
       }
     }
+    return url;
+  }
 
-    // TODO: move duplicate code (status code, content-type and errors check) to `API.request(url, options)` method
-    const response = await fetch(url);
-    if (!response.headers.get("content-type")?.includes("json")) {
-      throw new Error("Server response does not contain JSON!");
+  async request<ResSuccess = unknown, ResFail = unknown>(url: string | URL, options?: APIRequestOptions) {
+    const opts: RequestInit = {};
+    if (options?.headers) {
+      opts.headers = options.headers;
+    }
+    
+    if (options?.body !== undefined && !(opts.headers as Record<string, string>)['Content-Type']) {
+      // treat body as JSON
+      opts.body = JSON.stringify(options.body);
+      (opts.headers as Record<string, string>)['Content-Type'] = 'application/json';
     }
 
-    if (response.ok) {
-      const data: ProductsResponse = await response.json();
-      return data;
+    if (this.token && !(opts.headers as Record<string, string>)['Authorization']) {
+      (opts.headers as Record<string, string>)['Authorization'] = this.tokenPrefix + this.token;
+    }
+    
+    const response = await fetch(url, opts);
+    let body: undefined | ResSuccess | ResFail;
+    if (response.headers.get('content-type')?.includes('application/json')) {
+      body = await response.json();
+    }
+    
+    return {
+      requestUrl: url,
+      requestOptions: opts,
+      response,
+      status: response.status,
+      statusText: response.statusText,
+      ...({
+        ok: response.ok,
+        body: !body ? null : (response.ok ? body as ResSuccess : body as ResFail),
+      } as { ok: true, body: ResSuccess | null } | { ok: false, body: ResFail | null }),
+    };
+  }
+
+  /**
+   * Получение списка товаров с пагинацией
+   */
+  async getProducts(options: GetProductsOptions = {}): Promise<ProductsResponse | null> {
+    const url = new URL(`${backendURL}/products`);
+    this._setURLSearchParams(url, options);
+
+    const result = await this.request<ProductsResponse, ServerErrorResponse>(url);
+
+    if (result.ok) {
+      return result.body;
     } else {
-      const data: ServerErrorResponse = await response.json();
-      if (typeof data.message === "string") {
-        throw new Error(data.message);
-      } else {
-        console.error(data.message);
-        throw new Error("See console output for more information");
-      }
+      console.error(result.status, result.body);
+      return null;
     }
   }
 
   /**
    * Получение существующего товара
    */
-  async getProduct(id: string, options?: { shopId: string }) {
+  async getProduct(id: string, options?: { shopId: string }): Promise<Product | null> {
     const url = new URL(`${backendURL}/products/${id}`);
-    if (options) {
-      for (const key in options) {
-        url.searchParams.set(
-          key,
-          options[key as keyof typeof options]?.toString?.() || ""
-        );
-      }
-    }
+    this._setURLSearchParams(url, options);
 
-    const response = await fetch(url);
-    const data: Product = await response.json();
-    return data;
+    const result = await this.request<Product, ServerErrorResponse>(url);
+
+    if (result.ok) {
+      return result.body;
+    } else {
+      console.error(result.status, result.body);
+      return null;
+    }
   }
 
   /**
    * Получение ссылки на картинку товара
+   * @deprecated since v2. Please use `Product.images` field. now returns RAW image (can be large)
    */
-  getProductImageURL(product: Product) {
+  getProductImageURL(product: Product): string {
     if(product.images && product.images.length > 0) {
       return new URL(product.images[0], backendURL).toString();
     }
@@ -113,22 +151,14 @@ export class API {
   }
 
   /**
-   * Получение существующего магазина с товарами
-   * 
-   * > **ВНИМАНИЕ**: с сервера придет МНОГО данных с историей о ценах товаров и всеми товарами в магазине!
+   * Получение списка магазинов
+   * @deprecated (currently not implemented in v2)
    */
   async getShops(options: GetShopsOptions) {
+    // TODO
     const url = new URL(`${backendURL}/shops`);
-    if (options) {
-      for (const key in options) {
-        url.searchParams.set(
-          key,
-          options[key as keyof typeof options]?.toString?.() || ""
-        );
-      }
-    }
+    this._setURLSearchParams(url, options);
 
-    // TODO: move duplicate code (status code, content-type and errors check) to `API.request(url, options)` method
     const response = await fetch(url);
     if (!response.headers.get("content-type")?.includes("json")) {
       throw new Error("Server response does not contain JSON!");
@@ -139,7 +169,10 @@ export class API {
   }
 
   /**
-   * Получение списка магазинов
+   * Получение существующего магазина с товарами
+   * @deprecated (currently not implemented in v2)
+   * 
+   * > **ВНИМАНИЕ**: с сервера придет МНОГО данных с историей о ценах товаров и всеми товарами в магазине!
    */
   async getShop(id: string) {
     const url = new URL(`${backendURL}/shops/${id}`);
@@ -149,68 +182,93 @@ export class API {
     return data;
   }
   
-  async register(user: { username: string, password: string }) {
+  async register(user: { username: string, password: string }): Promise<{ ok: boolean }> {
     const url = new URL(`${backendURL}/auth/register`);
     
-    const response = await fetch(url, {
+    const result = await this.request<{ ok: boolean }, ServerErrorResponse>(url, {
       method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      body: user,
     });
-    if(response.ok) {
-      const data: { ok: boolean } = await response.json();
-      return data;
+
+    if (result.ok) {
+      return result.body || { ok: true };
     } else {
+      console.error(result.status, result.body);
       return { ok: false };
     }
   }
 
-  async login(user: { username: string, password: string }) {
+  async login(user: { username: string, password: string }): Promise<{ token: string } | null> {
     const url = new URL(`${backendURL}/auth/login`);
     
-    const response = await fetch(url, {
+    const result = await this.request<{ token: string }, ServerErrorResponse>(url, {
       method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      body: user,
     });
-    const data: { token?: string } = await response.json();
-    return data;
+
+    if (result.ok) {
+      return result.body;
+    } else {
+      console.error(result.status, result.body);
+      return null;
+    }
   }
   
-  async logout() {
+  async logout(): Promise<boolean> {
     const url = new URL(`${backendURL}/auth/logout`);
     
-    const response = await fetch(url, {
+    const result = await this.request<unknown, ServerErrorResponse>(url, {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + this.token,
-      }
     });
-    // const data: {} = await response.json();
-    if (response.ok) {
+    
+    if (result.ok) {
       return true;
     } else {
+      console.error(result.status, result.body);
       return false;
     }
   }
   
-  async whoami() {
+  async whoami(): Promise<User | null> {
     const url = new URL(`${backendURL}/auth/whoami`);
     
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + this.token,
-      }
-    });
-    if(response.ok) {
-      const data: User = await response.json();
-      return data;
+    const result = await this.request<User, ServerErrorResponse>(url);
+
+    if (result.ok) {
+      return result.body;
     } else {
+      console.error(result.status, result.body);
+      return null;
+    }
+  }
+
+  async setLike(productId: string, likeState: boolean = true): Promise<boolean> {
+    const url = new URL(`${backendURL}/products/${productId}/like`);
+
+    const result = await this.request<unknown, ServerErrorResponse>(url, {
+      method: likeState ? 'PUT' : 'DELETE'
+    });
+
+    if (result.ok) {
+      return true;
+    } else {
+      console.error(result.status, result.body);
+      return false;
+    }
+  }
+
+  /**
+   * используйте `getProducts` с оппцией `onlyLiked` для получения списка товаров (а не только их ID)
+   */
+  async getLikedProductsId(): Promise<string[] | null> {
+    const url = new URL(`${backendURL}/users/self/likes`);
+
+    const result = await this.request<string[], ServerErrorResponse>(url);
+
+    if (result.ok) {
+      return result.body;
+    } else {
+      console.error(result.status, result.body);
       return null;
     }
   }
