@@ -31,3 +31,6 @@
 
 ### Добавлена пагинация 
 ![Pagination](docs/Pagination.png)
+
+### Добавлена страница "Любимые продукты"
+![Favorites](docs/Favorites.png)
