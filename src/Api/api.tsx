@@ -143,11 +143,20 @@ export class API {
 
   /**
    * Получение ссылки на картинку товара
-   * @deprecated since v2. Please use `Product.images` field. now returns RAW image (can be large)
+   * @ deprecated since v2. Please use `Product.images` field. now returns RAW image (can be large)
    */
   getProductImageURL(product: Product): string {
     if(product.images && product.images.length > 0) {
-      return new URL(product.images[0], backendURL).toString();
+      const img = product.images[0];
+      if (img.startsWith('http://') || img.startsWith('https://')) {
+        // absolute path
+        return img;
+      } else if (img.startsWith('/api/')) {
+        // "relative" to API root
+        return new URL(img.slice(1), backendURL?.split('/api/')[0] + '/').toString();
+      } else {
+        return new URL(img, backendURL).toString();
+      }
     }
     if (!product.barcodes?.length) {
       return "";
