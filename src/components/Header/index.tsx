@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import logo from "./img/Cittaslow_logo.png";
 import "./style.css";
-import { BoxArrowDownLeft, BoxArrowInDownLeft, HeartFill, PersonPlusFill } from "react-bootstrap-icons";
+import { BoxArrowDownLeft, BoxArrowInDownLeft, HeartFill, PersonPlusFill, InfoSquare } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { Context } from "../../App";
 import api from "../../Api/api";
@@ -48,7 +48,10 @@ export default function Header() {
           </Link> : '' }
           {user ? <Link to={""} onClick={logOut}>
             <BoxArrowDownLeft />
-          </Link> : '' }  
+          </Link> : '' }
+          <Link to={"/about"}>
+            <InfoSquare />
+          </Link>
         </nav>
       </div>
     </div>

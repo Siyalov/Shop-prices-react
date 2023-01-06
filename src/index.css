@@ -47,3 +47,10 @@ button.btn {
   height: max-content;
   align-self: flex-end;
 }
+
+.developer-card {
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: #000 0 0 4px;
+  margin: auto;
+}
