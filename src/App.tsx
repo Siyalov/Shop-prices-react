@@ -11,6 +11,7 @@ import Registration from './Pages/Registration';
 import Authorization from './Pages/Authorization';
 import { User } from './Api/server.typings';
 import Favorites from './Pages/Favorites';
+import About from './Pages/About';
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined,
@@ -120,6 +121,7 @@ function App() {
         {/* <Route path={path + "profile"} element={<Profile user={user} />} />  */}
         <Route path={"register"} element={<Registration />} /> 
         <Route path={"auth"} element={<Authorization />} /> 
+        <Route path={"about"} element={<About />} /> 
       </Routes>
     </Context.Provider>
   );
