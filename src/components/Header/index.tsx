@@ -29,9 +29,9 @@ export default function Header() {
   return (
     <div className="header">
       <div>
-        <a className="logo" href={"/"}>
+        <Link className="logo" to={"/"}>
           <img src={logo} alt="Cittaslow" className="full-logo" />
-        </a>
+        </Link>
       </div>
       <input type="search" value={searchQuery} onChange={handler} />
       <div className="buttons">

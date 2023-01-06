@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import api from "../../Api/api";
 import { Product } from "../../Api/server.typings";
 import "./index.scss"
-import { path } from "../../settings";
 import { EmojiHeartEyes, EmojiHeartEyesFill, ArrowThroughHeart, ArrowThroughHeartFill } from 'react-bootstrap-icons';
 import { Context } from "../../App";
 
@@ -13,7 +12,7 @@ export default function Card({ product, searchQuery }: { product: Product, searc
    const idx = product.name.indexOf(searchQuery);
    const [like, setLike] = useState(favorites.includes(product.id));
    return (
-      <Link to={path + 'product/' + product.id} className="card">
+      <Link to={'product/' + product.id} className="card">
          <div className="card__header">
             <span className="card__like" onClick={(event) => {
                event.preventDefault();

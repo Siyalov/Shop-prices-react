@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Catalog from './Pages/Catalog';
 import { Routes, Route } from 'react-router-dom';
-import { path, shops } from './settings';
+import { shops } from './settings';
 import "./index.css" 
 import Header from './components/Header';
 import api, { ProductsResponse } from './Api/api';
@@ -114,12 +114,12 @@ function App() {
     }}>
       <Header />
       <Routes>
-        <Route path={path} element={<Catalog />} />
-        <Route path={path + "product/:id"} element={<Product />} />
-        <Route path={path + "favorites"} element={<Favorites /> } />
+        <Route path={"/"} element={<Catalog />} />
+        <Route path={"product/:id"} element={<Product />} />
+        <Route path={"favorites"} element={<Favorites /> } />
         {/* <Route path={path + "profile"} element={<Profile user={user} />} />  */}
-        <Route path={path + "register"} element={<Registration />} /> 
-        <Route path={path + "auth"} element={<Authorization />} /> 
+        <Route path={"register"} element={<Registration />} /> 
+        <Route path={"auth"} element={<Authorization />} /> 
       </Routes>
     </Context.Provider>
   );
