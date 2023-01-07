@@ -1,41 +1,40 @@
 # Project shops-prices 
 
-> Note: Данный проект находится в разработке
+> Note: Project is under development
 >
-> Превью: https://sl40.6400444.ru/shop-prices
+> Preview: https://sl40.6400444.ru/shop-prices
 
-## Используемые технологии:
+## Used Technologies:
 * [React](https://reactjs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [React bootstrap](https://react-bootstrap.netlify.app/)
 * [ApexCharts](https://apexcharts.com/)
-* Backend от [@Irelynx](https://github.com/Irelynx)
+* Backend by [@Irelynx](https://github.com/Irelynx)
   * Node.js (Express, TypeScript, Sequelize, Postgres)
 
 
-## Скриншоты:
+## Screenshots (currently only in Russian):
 
-### Каталог
+### Catalog
 ![Catalog](docs/Catalog.png)
 
-### Авторизация
+### Authorization
 ![Authorization](docs/Auth.png)
 
-
-### Регистрация
+### Registration
 ![Register](docs/Register.png)
 
-### Карточка товара
+### Product card
 ![Product](docs/Product.png)
 
-### Добавлены лайки и иконки регистрации, входа/выхода 
+### Likes, register and auth icons
 ![Icons](docs/Icons.png)
 
-### Добавлена пагинация 
+### Catalog Pagination
 ![Pagination](docs/Pagination.png)
 
-### Добавлена страница "Любимые продукты"
+### "Favorites" page
 ![Favorites](docs/Favorites.png)
 
-### Добавлена страница "Разработчики"
+### "Developers" page
 ![About](docs/About.png)
