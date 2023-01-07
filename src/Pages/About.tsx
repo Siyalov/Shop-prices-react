@@ -5,9 +5,19 @@ export default function About() {
   return <Container>
     <Row style={{textAlign: "center"}}>
       <Col xs={12}>
-        <h3>Веб приложение Shop-prices. Позволяет посмотреть динамику 
-            изменения цены примерно на 40000 товаров в двух популярных сетевых магазинах Финляндии. 
-        </h3>
+        <h3>Веб приложение Shop-prices.</h3>
+        <h4>
+        Позволяет отследить динамику изменения цены римерно на 40,000 товаров в двух популярных сетевых магазинах Финляндии: 
+        </h4>
+        <h4>
+
+        <div style={{display: "inline-block", textAlign: 'left'}}>
+          <ul>
+            <li><a href="https://s-kaupat.fi">S-market Kristiinankaupunki</a></li>  
+            <li><a href="https://k-ruoka.fi">K-Supermarket Selleri (Kristiinankaupunki)</a></li>  
+          </ul>
+        </div>
+        </h4>
       </Col>
       <Col xs={12} >
         <h1><Github size={32}/> Github:</h1>
