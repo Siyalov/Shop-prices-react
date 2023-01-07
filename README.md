@@ -1,6 +1,8 @@
-# Project shops - prices 
+# Project shops-prices 
 
 > Note: Данный проект находится в разработке
+>
+> Превью: https://sl40.6400444.ru/shop-prices
 
 ## Используемые технологии:
 * [React](https://reactjs.org/)
@@ -34,3 +36,6 @@
 
 ### Добавлена страница "Любимые продукты"
 ![Favorites](docs/Favorites.png)
+
+### Добавлена страница "Разработчики"
+![About](docs/About.png)
