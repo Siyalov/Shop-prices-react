@@ -1,0 +1,28 @@
+{
+  "signIn": "Log ind",
+  "previousPage": "Tidligere",
+  "nextPage": "Næste",
+  "userName": "Brugernavn",
+  "enterYourUserName": "Skriv dit brugernavn!",
+  "password": "Adgangskode",
+  "register": "Tilmeld",
+  "loadingPleaseWait": "Indlæser vent venligst...",
+  "favoriteProducts": "Favoritprodukter",
+  "favoriteProductsIsEmpty": "Favoritprodukter er tomme nu :(",
+  "addToCart": "Tilføj til kurv",
+  "description": "Beskrivelse",
+  "characteristics": "Egenskaber",
+  "weight": "Vægt",
+  "unitKg": "kg",
+  "barcode": "Stregkode",
+  "price": "Pris",
+  "aboutProject": {
+    "header": "Web-applikation Shop-prices.",
+    "shortDescription": "Bruges til at spore dynamikken i prisændringer for cirka 40.000 produkter i to populære finske detailnetværk:",
+    "developers": "Udviklere:"
+  },
+  "errors":{
+    "registrationError": "Registreringsfejl!",
+    "authError": "Autorisationsfejl!"
+  }
+}
