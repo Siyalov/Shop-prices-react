@@ -9,7 +9,7 @@ import { Context } from "../../App";
 
 export default function Card({ product, searchQuery }: { product: Product, searchQuery: string }) {
    const { favorites } = useContext(Context);
-   const idx = product.name.indexOf(searchQuery);
+   const idx = product.name.toLowerCase().indexOf(searchQuery.toLowerCase());
    const [like, setLike] = useState(favorites.includes(product.id));
    return (
       <Link to={'/product/' + product.id} className="card">
