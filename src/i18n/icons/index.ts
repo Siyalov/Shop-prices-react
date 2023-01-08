@@ -2,7 +2,7 @@ import en from './en.svg';
 import fi from './fi.svg';
 import sv from './sv.svg';
 import ru from './ru.svg';
-import ua from './uk.svg';
+import uk from './uk.svg';
 import eo from './eo.svg';
 import da from './da.svg';
 // import la from './la.svg'; // TODO
@@ -12,7 +12,7 @@ export {
   fi,
   sv,
   ru,
-  ua,
+  uk,
   eo,
   da,
   // la,
