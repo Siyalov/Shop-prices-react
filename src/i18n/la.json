@@ -1,0 +1,28 @@
+{
+  "signIn": "Inscribe",
+  "previousPage": "Prior",
+  "nextPage": "Deinde",
+  "userName": "Usoris",
+  "enterYourUserName": "Nulla usoris!",
+  "password": "Password",
+  "register": "Subcriptio",
+  "loadingPleaseWait": "Loading, placere expectare...",
+  "favoriteProducts": "Favorite Products",
+  "favoriteProductsIsEmpty": "Favorite products est inanis nunc :(",
+  "addToCart": "Add to Cart",
+  "description": "Descriptio",
+  "characteristics": "Characteres",
+  "weight": "Pondus",
+  "unitKg": "kg",
+  "barcode": "Barcode",
+  "price": "Pricio",
+  "aboutProject": {
+    "header": "Textus-application Shop-prices.",
+    "shortDescription": "Ad track ad dynamics de pretio mutationes pro circiter 40,000 products in duas popularibus Fennica retail retiacula:",
+    "developers": "Developers:"
+  },
+  "errors":{
+    "registrationError": "Adnotatione error!",
+    "authError": "Errore auctoritatis!"
+  }
+}

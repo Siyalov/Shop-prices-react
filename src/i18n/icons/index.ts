@@ -5,7 +5,7 @@ import ru from './ru.svg';
 import uk from './uk.svg';
 import eo from './eo.svg';
 import da from './da.svg';
-// import la from './la.svg'; // TODO
+import la from './la.svg';
 
 export {
   en,
@@ -15,5 +15,5 @@ export {
   uk,
   eo,
   da,
-  // la,
+  la,
 };

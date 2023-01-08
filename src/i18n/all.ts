@@ -8,7 +8,7 @@ export const supportedLanguages = [
   "uk",
   "eo",
   "da",
-  // "la",
+  "la",
 ] as const;
 
 // TODO: move to translation
