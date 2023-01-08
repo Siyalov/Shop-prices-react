@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 import en from './en.json';
 import ru from './ru.json';
 import fi from './fi.json';
+import uk from './uk.json';
 
 import { supportedLanguages } from './all';
 
@@ -14,6 +15,7 @@ const resources = {
   en: { translation: en },
   ru: { translation: ru },
   fi: { translation: fi },
+  uk: { translation: uk },
 };
 
 let preferredLanguage = 'en';

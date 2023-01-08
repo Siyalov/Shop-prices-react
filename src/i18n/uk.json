@@ -1,0 +1,28 @@
+{
+  "signIn":"Увійти",
+  "previousPage": "Назад",
+  "nextPage": "Вперед",
+  "userName": "Ім'я користувача",
+  "enterYourUserName": "Введіть ім'я!",
+  "password": "Пароль",
+  "register": "Реєстрація",
+  "loadingPleaseWait": "Дані завантажуються, зачекайте...",
+  "favoriteProducts": "Улюблені продукти",
+  "favoriteProductsIsEmpty": "Ще немає улюблених продуктів :(",
+  "addToCart": "В кошик",
+  "description": "Опис",
+  "characteristics": "Характеристики",
+  "weight": "Вага",
+  "unitKg": "кг",
+  "barcode": "Штрих-код",
+  "price": "Ціна",
+  "aboutProject": {
+    "header": "Веб-додаток для магазинів.",
+    "shortDescription": "Дозволяє відстежувати динаміку змін у ціні приблизно на 40 000 товарів у двох популярних магазинах мережі у Фінляндії:",
+    "developers": "Розробники:"
+  },
+  "errors":{
+    "registrationError": "Помилка реєстрації!",
+    "authError": "Помилка авторизації!"
+  }
+}
