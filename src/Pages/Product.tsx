@@ -71,6 +71,21 @@ export default function Product() {
       x: {
         format: "dd MMM yyyy"
       },
+      y: {
+        formatter(val, opts: {
+          seriesIndex: number,
+          dataPointIndex: number,
+          series: Array<Array<number>>,
+          w: any
+        }) {
+          console.log(val, opts);
+          let change = '0';
+          if (opts.dataPointIndex) {
+            change = (100 * (-1 + opts.series[opts.seriesIndex][opts.dataPointIndex] / opts.series[opts.seriesIndex][0])).toFixed(1);
+          }
+          return val.toString() + (' (' + change + '%)');
+        }
+      }
     },
   };
 
