@@ -24,5 +24,6 @@
   "errors":{
     "registrationError": "Registreringsfejl!",
     "authError": "Autorisationsfejl!"
-  }
+  },
+  "autoTranslationWarning": "Automatisk oversættelse!"
 }

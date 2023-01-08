@@ -19,12 +19,14 @@ interface GetProductsOptions {
   /** количество продуктов на странице */
   pageSize?: number;
   /** идентификатор магазина, может быть несколько (через запятую, например: `123,456,789`) */
-  shopId?: string
+  shopId?: string;
   /** порядок сортировки (desc - от Я до А, asc - от А до Я, по умолчанию - desc) */
   // order?: "DESC" | "ASC" | "asc" | "desc";
   /** поле сортировки (по умолчанию - createdAt) */
   // sortBy?: "id" | "hidden" | "name" | "createdAt" | "updatedAt";
-  onlyLiked?: boolean
+  onlyLiked?: boolean;
+  /** en,fi,ru */
+  langs?: string;
 }
 
 /** @deprecated */

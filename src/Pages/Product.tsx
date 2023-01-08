@@ -15,6 +15,16 @@ import {
   } from "react-bootstrap";
 import { shops } from '../settings';
 import { useTranslation } from "react-i18next";
+import WarningMark from "../components/WarningMark";
+
+function getLocaleFromList(list: Array<{ lang: string, value: string, isAuto: boolean }>, lang: string) {
+   for (const element of list) {
+      if (element.lang === lang) {
+         return element;
+      }
+   }
+   return null;
+}
 
 async function loadProduct(
   productId: string,
@@ -38,7 +48,9 @@ export default function Product() {
   const [product, setProduct] = useState<ProductType>();
   const [cnt, setCnt] = useState(0);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const [localizedName, setLocalizedName] = useState<{value?: string, lang?: string, isAuto: boolean}>();
 
   const chartOptions: ApexCharts.ApexOptions = {
     chart: {
@@ -137,8 +149,13 @@ export default function Product() {
     }
 
     setChartData(graphs);
-    
-  }, [product])
+  }, [product]);
+
+  useEffect(() => {
+    setLocalizedName(getLocaleFromList(product?.names || [], i18n.language)
+     || getLocaleFromList(product?.names || [], 'en')
+     || { value: product?.name, isAuto: false });
+  }, [product, i18n.language])
 
   // params.id
   useEffect(() => {
@@ -152,7 +169,7 @@ export default function Product() {
           <Col xs={12} lg={7}>
             <Row>
               <Col xs={12}>
-                <h1>{product.name}</h1>
+                <h1>{localizedName?.value} {localizedName?.isAuto ? <WarningMark text={t('autoTranslationWarning')} /> : ''}</h1>
               </Col>
               <Col xs={12} md={6} lg={4}>
                 <Figure>

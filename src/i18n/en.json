@@ -24,5 +24,6 @@
   "errors":{
     "registrationError": "Registration error!",
     "authError": "Authorization error!"
-  }
+  },
+  "autoTranslationWarning": "Automatic translation!"
 }

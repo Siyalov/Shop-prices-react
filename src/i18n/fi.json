@@ -24,5 +24,6 @@
   "errors": {
     "registrationError": "Rekisteröintivirhe!",
     "authError": "Valtuutusvirhe!"
-  }
+  },
+  "autoTranslationWarning": "Automaattinen käännös!"
 }

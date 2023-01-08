@@ -24,5 +24,6 @@
   "errors":{
     "registrationError": "Registra eraro!",
     "authError": "Rajtiga eraro!"
-  }
+  },
+  "autoTranslationWarning": "Aŭtomata traduko!"
 }

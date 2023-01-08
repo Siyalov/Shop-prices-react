@@ -24,5 +24,6 @@
   "errors":{
     "registrationError": "Помилка реєстрації!",
     "authError": "Помилка авторизації!"
-  }
+  },
+  "autoTranslationWarning": "Автоматичний переклад!"
 }

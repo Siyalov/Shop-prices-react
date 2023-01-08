@@ -14,6 +14,7 @@ import Favorites from './Pages/Favorites';
 import About from './Pages/About';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from './utils';
+import { supportedLanguages } from './i18n/all';
 
 
 export interface ShopPricesContext {
@@ -58,13 +59,15 @@ function App() {
         page: page,
         pageSize: 40,
         q: searchQuery,
-        shopId: shops
+        shopId: shops,
+        langs: supportedLanguages.join(','),
       });
     } else {
       data = await api.getProducts({
         page: page,
         pageSize: 40,
-        shopId: shops
+        shopId: shops,
+        langs: supportedLanguages.join(','),
       });
     }
     // sort price

@@ -24,5 +24,6 @@
   "errors":{
     "registrationError": "Adnotatione error!",
     "authError": "Errore auctoritatis!"
-  }
+  },
+  "autoTranslationWarning": "Automatic Translation!"
 }

@@ -10,23 +10,28 @@ export interface Product {
    */
   descriptionI18N: string | null
   /** Цена за ед. измерения: киллограм, литры, шт. */
-  priceUnit: 'KGM' | 'LTR' | 'PCS' | null
+  priceUnit: 'KGM' | 'LTR' | 'PCS' | 'MTR' | null
   /** Цена для сравнения: киллограм, литры, шт. */
-  comparisonPriceUnit: 'KGM' | 'LTR' | 'PCS' | null
+  comparisonPriceUnit: 'KGM' | 'LTR' | 'PCS' | 'MTR' | null
   /** идентификатор категории */
   categoryId: string | null
   /** дата и время создания, например `2012-12-31T23:59:59.123Z` */
   createdAt: string;
   /** дата и время изменения, например `2012-12-31T23:59:59.123Z` */
   updatedAt: string;
+
   /** локализованные имена(перевод) */
   names: Array<{
-    id: string
+    id?: string
     refId?: string
     /** язык перевода */
-    lang: 'en' | 'fi' | 'sw' | 'ru'
+    lang: 'en' | 'fi' | 'sv' | 'ru' | 'uk' | 'la' | 'eo' | 'da'
     /** значение перевода */
-    value: string  
+    value: string
+    /** автоматический перевод */
+    isAuto: boolean
+    createdAt?: string
+    updatedAt?: string
   }>
   /** цены товаров (только актуальные) */
   prices?: Array<{
@@ -78,8 +83,8 @@ export interface Product {
     updatedAt: string
   }>;
   measurements: null | {
-    id: string
-    productId: string
+    id?: string
+    productId?: string
     width: number
     height: number
     length: number
@@ -87,7 +92,7 @@ export interface Product {
     /** количество единиц измерения */
     contentSize: number
     /** единица измерения упаковки */
-    contentUnit: 'KGM' | 'LTR' | 'PCS' | null
+    contentUnit: 'KGM' | 'LTR' | 'PCS' | 'MTR' | null
   }
   barcode: string
   images: Array<string>
