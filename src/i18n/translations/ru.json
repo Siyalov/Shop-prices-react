@@ -1,5 +1,6 @@
 {
   "translation": {
+    "signIn":"Войти",
     "previousPage": "Назад",
     "nextPage": "Вперед",
     "userName": "Имя пользователя",
@@ -22,7 +23,8 @@
       "developers": "Разработчики:"
     },
     "errors":{
-      "registrationError": "Ошибка регистрации!"
+      "registrationError": "Ошибка регистрации!",
+      "authError": "Ошибка авторизации!"
     }
   }
 }

@@ -1,5 +1,6 @@
 {
   "translation": {
+    "signIn": "Sign in",
     "previousPage": "Previous",
     "nextPage": "Next",
     "userName": "Username",
@@ -22,7 +23,8 @@
       "developers": "Developers:"
     },
     "errors":{
-      "registrationError": "Registration error!"
+      "registrationError": "Registration error!",
+      "authError": "Authorization error"
     }
   }
 }
