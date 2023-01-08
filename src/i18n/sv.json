@@ -1,0 +1,28 @@
+{
+  "signIn": "Logga in",
+  "previousPage": "Tidigare",
+  "nextPage": "Nästa",
+  "userName": "Användarnamn",
+  "enterYourUserName": "Skriv in ditt användarnamn!",
+  "password": "Lösenord",
+  "register": "Registrera",
+  "loadingPleaseWait": "Laddar, vänta...",
+  "favoriteProducts": "Favoritprodukter",
+  "favoriteProductsIsEmpty": "Favoritprodukter är tomma nu :(",
+  "addToCart": "Lägg till i kundvagn",
+  "description": "Beskrivning",
+  "characteristics": "Egenskaper",
+  "weight": "Vikt",
+  "unitKg": "kg",
+  "barcode": "Streckkod",
+  "price": "Pris",
+  "aboutProject": {
+    "header": "Webbapplikation Shop-prices.",
+    "shortDescription": "Används för att spåra dynamiken i prisändringar för cirka 40 000 produkter i två populära finska detaljhandelsnätverk:",
+    "developers": "Utvecklare:"
+  },
+  "errors":{
+    "registrationError": "Registreringsfel!",
+    "authError": "Auktoriseringsfel!"
+  }
+}

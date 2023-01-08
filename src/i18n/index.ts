@@ -5,6 +5,7 @@ import en from './en.json';
 import ru from './ru.json';
 import fi from './fi.json';
 import uk from './uk.json';
+import sv from './sv.json';
 import da from './da.json';
 
 import { supportedLanguages } from './all';
@@ -17,6 +18,7 @@ const resources = {
   ru: { translation: ru },
   fi: { translation: fi },
   uk: { translation: uk },
+  sv: { translation: sv },
   da: { translation: da },
 };
 
