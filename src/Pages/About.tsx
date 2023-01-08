@@ -1,22 +1,25 @@
 import { Col, Container, Figure, Row } from "react-bootstrap";
 import { Github } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  
+  const { t } = useTranslation();
+
   return <Container>
     <Row style={{textAlign: "center"}}>
       <Col xs={12}>
-        <h3>Веб приложение Shop-prices.</h3>
+        <h3>{t('aboutProject.header')}</h3>
         <h4>
-        Позволяет отследить динамику изменения цены римерно на 40,000 товаров в двух популярных сетевых магазинах Финляндии: 
+          {t('aboutProject.shortDescription')}
         </h4>
         <h4>
-
-        <div style={{display: "inline-block", textAlign: 'left'}}>
-          <ul>
-            <li><a href="https://s-kaupat.fi">S-market Kristiinankaupunki</a></li>  
-            <li><a href="https://k-ruoka.fi">K-Supermarket Selleri (Kristiinankaupunki)</a></li>  
-          </ul>
-        </div>
+          <div style={{display: "inline-block", textAlign: 'left'}}>
+            <ul>
+              <li><a href="https://s-kaupat.fi">S-market (Kristiinankaupunki)</a></li>  
+              <li><a href="https://k-ruoka.fi">K-Supermarket Selleri (Kristiinankaupunki)</a></li>  
+            </ul>
+          </div>
         </h4>
       </Col>
       <Col xs={12} >
@@ -25,7 +28,7 @@ export default function About() {
           <img alt="GitHub OpenGraph statistics" height="300px" src="https://opengraph.githubassets.com/9c370dce82aa0f8d2db791db8649d42e31b7a8ea2fab257ba8b04265144c973f/Siyalov/Shop-prices-react"/>
         </a>
       </Col>
-      <Col xs={12} style={{textAlign: "center"}}><h2>Разработчики:</h2></Col>
+      <Col xs={12} style={{textAlign: "center"}}><h2>{t('aboutProject.developers')}</h2></Col>
       <Col xs={12} lg={5} className="developer-card">
         <Figure>
           <Figure.Image style={{borderRadius: "50%", maxHeight: '50vh'}} src="https://avatars.githubusercontent.com/u/91375207?v=4" />
@@ -61,5 +64,4 @@ export default function About() {
       </Col>
     </Row>
   </Container>
-
 }

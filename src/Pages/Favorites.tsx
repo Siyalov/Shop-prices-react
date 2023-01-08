@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import api, { ProductsResponse } from "../Api/api";
 import { Context } from "../App";
 import Card from "../components/Card";
 import { shops } from "../settings";
 
 export default function Favorites() {
-  const { favorites, /*addToCart*/ } = useContext(Context);
-  const [ likeProduct, setLikeProduct] = useState<ProductsResponse>()
+  const { favorites /*addToCart*/ } = useContext(Context);
+  
+  const { t } = useTranslation();
+  
+  const [likeProduct, setLikeProduct] = useState<ProductsResponse>();
   async function loadProducts() {
     const likeProduct = await api.getProducts({
       pageSize: 1000,
@@ -15,7 +19,7 @@ export default function Favorites() {
     });
     console.log(likeProduct);
     if (likeProduct) {
-      setLikeProduct(likeProduct)
+      setLikeProduct(likeProduct);
     }
   }
 
@@ -23,18 +27,17 @@ export default function Favorites() {
     loadProducts();
   }, []);
 
-  return <>
-     <h1>
-       Любимые продукты
-     </h1>
-     <div className="cards-container">
-        {likeProduct?.entries.map((product, i) => (
-          <Card
-            key={product.id}
-            product={product}
-            searchQuery=""
-          />
-        ))}
+  return (
+    <>
+      <h1>{t('favoriteProducts')}</h1>
+      <div className="cards-container">
+        {favorites?.length ? 
+          likeProduct?.entries.map((product, i) => (
+            <Card key={product.id} product={product} searchQuery="" />
+          ))
+          : t('favoriteProductsIsEmpty')
+        }
       </div>
-  </>
+    </>
+  );
 }

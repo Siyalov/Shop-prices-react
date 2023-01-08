@@ -1,0 +1,28 @@
+{
+  "signIn": "Ensaluti",
+  "previousPage": "Antaŭa",
+  "nextPage": "Poste",
+  "userName": "Uzantnomo",
+  "enterYourUserName": "Enigu vian salutnomon!",
+  "password": "Pasvorto",
+  "register": "Registriĝu",
+  "loadingPleaseWait": "Ŝarĝante, bonvolu atendi ...",
+  "favoriteProducts": "Plej ŝatataj produktoj",
+  "favoriteProductsIsEmpty": "Plej ŝatataj produktoj estas malplena nun :(",
+  "addToCart": "Aldonu al la korbo",
+  "description": "Priskribo",
+  "characteristics": "Karakterizaĵoj",
+  "weight": "Pezo",
+  "unitKg": "kg",
+  "barcode": "Barcode",
+  "price": "Prezo",
+  "aboutProject": {
+    "header": "Ret-Aplikaj Shop-prices.",
+    "shortDescription": "Uzita por spuri la dinamikon de prezaj ŝanĝoj por proksimume 40.000 produktoj en du popularaj finnaj podetalaj retoj:",
+    "developers": "Ellaborantoj:"
+  },
+  "errors":{
+    "registrationError": "Registra eraro!",
+    "authError": "Rajtiga eraro!"
+  }
+}

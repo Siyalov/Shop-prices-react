@@ -6,6 +6,7 @@ import sha256 from 'crypto-js/sha256'
 import api from '../Api/api';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../App';
+import { useTranslation } from 'react-i18next';
 
 export default function Authorization() {
   const { setToken } = useContext(Context);
@@ -13,6 +14,7 @@ export default function Authorization() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const onAuthorization: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault();
     const authResult = await api.login({
@@ -24,7 +26,7 @@ export default function Authorization() {
       // move to main page
       navigate('/');
     } else {
-      setMessage('Ошибка авторизации!!!')
+      setMessage(t('errors.authError') || '')
     }
   }
   return <Container>
@@ -33,20 +35,20 @@ export default function Authorization() {
         <Card body>
           <Form >
             <Form.Group className="mb-3" controlId="username">
-              <Form.Label>Имя пользователя</Form.Label>
-              <Form.Control type="text" placeholder="Имя пользователя" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <Form.Label>{t("userName")}</Form.Label>
+              <Form.Control type="text" placeholder={t('userName') || ''} value={username}  onChange={(e) => setUsername(e.target.value)} />
               <Form.Text className="text-muted">
-                Введите свое имя!
+                {t("enterYourUserName")}               
               </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
-              <Form.Label>Пароль</Form.Label>
-              <Form.Control type="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Form.Label>{t("password")}</Form.Label>
+              <Form.Control type="password" placeholder={t('password') || ''} value={password} onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
 
             <Button variant="primary" type="submit" onClick={onAuthorization}>
-              Войти
+              {t("signIn")}              
             </Button>
             
             { message ? <>

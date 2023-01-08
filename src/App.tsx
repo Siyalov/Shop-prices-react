@@ -12,7 +12,9 @@ import Authorization from './Pages/Authorization';
 import { User } from './Api/server.typings';
 import Favorites from './Pages/Favorites';
 import About from './Pages/About';
+import { useTranslation } from 'react-i18next';
 import { useDebounce } from './utils';
+
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined,
@@ -43,6 +45,8 @@ function App() {
   const [ token, setToken ] = useState(localStorage.getItem('shop-prices-token') || '');
   const [ user, setUser ] = useState<User | null>(null);
   const [ favorites, setFavorites ] = useState<Array<string>>([]);
+  const { t, i18n } = useTranslation();
+  // console.log(i18n);
   // api.setToken(token);
 
   async function loadProducts() {
