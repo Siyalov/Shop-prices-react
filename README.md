@@ -38,3 +38,6 @@
 
 ### "Developers" page
 ![About](docs/About.png)
+
+### Multiple UI Languages
+![Languages](docs/Languages.png)
