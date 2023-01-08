@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import en from './translations/en.json';
 import ru from './translations/ru.json';
+import fi from './translations/fi.json';
 
 import { supportedLanguages } from './all';
 
@@ -11,7 +12,8 @@ import { supportedLanguages } from './all';
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en,
-  ru
+  ru,
+  fi
 };
 
 let preferredLanguage = 'en';

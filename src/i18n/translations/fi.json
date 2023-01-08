@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "signIn":"Kirjaudu sisään",
+    "previousPage": "Edellinen",
+    "nextPage": "Seuraava",
+    "userName": "Käyttäjänimi",
+    "enterYourUserName": "Syötä käyttäjänimesi!",
+    "password": "Salasana",
+    "register": "Rekisteröidy",
+    "loadingPleaseWait": "Ladataan, odota...",
+    "favoriteProducts": "Suosikkituotteet",
+    "favoriteProductsIsEmpty": "Suosikkituotteet ovat nyt tyhjät",
+    "addToCart": "Lisää ostoskoriin",
+    "description": "Kuvaus",
+    "characteristics": "Ominaisuudet",
+    "weight": "Paino",
+    "unitKg": "kg",
+    "barcode": "Viivakoodi",
+    "price": "Hinta",
+    "aboutProject": {
+      "header": "Verkkosovellus Shop-Prices.",
+      "shortDescription": "Käytetään seuraamaan noin 40 000 tuotteen hintamuutosten dynamiikkaa kahdessa suositussa suomalaisessa kauppaverkostossa:",
+      "developers": "Kehittäjät:"
+    },
+    "errors": {
+      "registrationError": "Rekisteröintivirhe!",
+      "authError": "Valtuutusvirhe!"
+    }
+  }
+}
