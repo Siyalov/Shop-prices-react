@@ -41,3 +41,6 @@
 
 ### Multiple UI Languages
 ![Languages](docs/Languages.png)
+ 
+###  Languages update [@Rtif173](https://github.com/Rtif173)
+![Languages_2](docs/Languages2.png)

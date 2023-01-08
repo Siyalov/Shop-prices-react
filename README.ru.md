@@ -42,3 +42,6 @@
 
 ### Добавлено несколько языков интерфейса
 ![Languages](docs/Languages.png)
+
+###  Изменен дизайн выбора языка [@Rtif173](https://github.com/Rtif173)
+![Languages_2](docs/Languages2.png)
