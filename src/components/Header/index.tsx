@@ -5,6 +5,7 @@ import { BoxArrowDownLeft, BoxArrowInDownLeft, HeartFill, PersonPlusFill, InfoSq
 import { Link } from "react-router-dom";
 import { Context } from "../../App";
 import api from "../../Api/api";
+import LanguagePicker from "../LanguagePicker";
 
 export default function Header() {
   const { searchQuery, setSearchQuery, setToken, user, favorites } = useContext(Context);
@@ -49,6 +50,7 @@ export default function Header() {
           {user ? <Link to={""} onClick={logOut}>
             <BoxArrowDownLeft />
           </Link> : '' }
+          <LanguagePicker />
           <Link to={"/about"}>
             <InfoSquare />
           </Link>

@@ -14,6 +14,7 @@ import {
   Button,
   } from "react-bootstrap";
 import { shops } from '../settings';
+import { useTranslation } from "react-i18next";
 
 async function loadProduct(
   productId: string,
@@ -36,6 +37,9 @@ export default function Product() {
   const params = useParams() as { id: string };
   const [product, setProduct] = useState<ProductType>();
   const [cnt, setCnt] = useState(0);
+
+  const { t } = useTranslation();
+
   const chartOptions: ApexCharts.ApexOptions = {
     chart: {
       id: 'price-chart',
@@ -166,29 +170,29 @@ export default function Product() {
                   </Col>
                   <Col md={6}>
                     <Button size="sm" variant="warning">
-                      В корзину
+                      {t('addToCart')}
                     </Button>
                   </Col>
                 </Row>
               </Col>
               <Col xs={12}>
-                <h2>Описание</h2>
+                <h2>{t('description')}</h2>
                 {/* <p>{product.description}</p> */}
               </Col>
               <Col xs={12}>
-                <h2>Характеристики</h2>
+                <h2>{t('characteristics')}</h2>
                 <Table hover>
                   <tbody>
                     <tr>
-                      <th>Вес</th>
-                      <th>{product.measurements?.netWeight || 'coming soon...'} кг</th>
+                      <th>{t('weight')}</th>
+                      <th>{product.measurements?.netWeight || 'coming soon...'} {t('unitKg')}</th>
                     </tr>
                     <tr>
-                      <th>Баркод</th>
-                      <th>{product.barcode || 'coming soon...'} </th>
+                      <th>{t('barcode')}</th>
+                      <th>{product.barcode || 'coming soon...'}</th>
                     </tr>
                     <tr>
-                      <th>Цена</th>
+                      <th>{t('price')}</th>
                       <th>
                         <Table>
                           {
@@ -220,7 +224,7 @@ export default function Product() {
           </Col>
         </Row>
       ) : (
-        "Данные загружаются, подождите.."
+        t('loadingPleaseWait')
       )}
     </Container>
   );

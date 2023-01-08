@@ -6,6 +6,7 @@
    height: 70px;
    background-color: var(--main-color);
    /* padding: 16px calc(50% - 500px); */
+   overflow: hidden;
 }
 .header > div {
    display: flex;
@@ -55,4 +56,6 @@ input {
    height: 24px;
    text-align: center;
    line-height: 22px;
+   overflow: hidden;
+   text-align: center;
 }

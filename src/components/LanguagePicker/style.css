@@ -1,0 +1,14 @@
+.clickable {
+  cursor: pointer;
+}
+
+.language-picker-choices {
+  background: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 70px;
+  z-index: 999;
+}
