@@ -12,6 +12,7 @@ import Authorization from './Pages/Authorization';
 import { User } from './Api/server.typings';
 import Favorites from './Pages/Favorites';
 import About from './Pages/About';
+import { useDebounce } from './utils';
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined,
@@ -38,6 +39,7 @@ function App() {
   const [ page, setPage ] = useState(0);
   const [ totalPages, setTotalPages ] = useState(0);
   const [ searchQuery, setSearchQuery ] = useState('');
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
   const [ token, setToken ] = useState(localStorage.getItem('shop-prices-token') || '');
   const [ user, setUser ] = useState<User | null>(null);
   const [ favorites, setFavorites ] = useState<Array<string>>([]);
@@ -81,7 +83,7 @@ function App() {
       loadProducts();
     }
     setPage(0);
-  }, [searchQuery]);
+  }, [debouncedSearchQuery]);
 
   useEffect(() => {
     if (products) {
