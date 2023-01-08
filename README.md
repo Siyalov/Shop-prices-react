@@ -44,3 +44,6 @@
  
 ###  Languages update [@Rtif173](https://github.com/Rtif173)
 ![Languages_2](docs/Languages2.png)
+
+###   Automatic translation  
+![Languages_3](docs/Languages3.png)

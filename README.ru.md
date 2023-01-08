@@ -45,3 +45,6 @@
 
 ###  Изменен дизайн выбора языка [@Rtif173](https://github.com/Rtif173)
 ![Languages_2](docs/Languages2.png)
+
+###   Добавлен автоматический переводчик 
+![Languages_3](docs/Languages3.png)
