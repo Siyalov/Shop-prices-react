@@ -7,6 +7,7 @@ import fi from './fi.json';
 import uk from './uk.json';
 import sv from './sv.json';
 import da from './da.json';
+import eo from './eo.json';
 
 import { supportedLanguages } from './all';
 
@@ -20,6 +21,7 @@ const resources = {
   uk: { translation: uk },
   sv: { translation: sv },
   da: { translation: da },
+  eo: { translation: eo },
 };
 
 let preferredLanguage = 'en';
