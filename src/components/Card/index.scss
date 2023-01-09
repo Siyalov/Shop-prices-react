@@ -1,48 +1,48 @@
 .cards-container {
-   .card {
-      border: 1px solid var(--main-color);
-      border-radius: 8px;
-      padding: 8px;
-      display: grid;
-      gap: 10px;
-      transition: box-shadow 0.2s, transform 0.2s;
-      // box-shadow: rgb(24, 6, 157) 0px 0px 8px;
-      box-shadow: var(--main-color) 0px 0px 8px;
-      transform: scale(1);
-   }
+  .card {
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    padding: 8px;
+    display: grid;
+    gap: 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    // box-shadow: rgb(24, 6, 157) 0px 0px 8px;
+    box-shadow: var(--main-color) 0px 0px 8px;
+    transform: scale(1);
+  }
 
-   .card:hover {
-      box-shadow: var(--main-color) 0px 0px 16px;
-      transform: scale(1.1);
-   }
-   
-   .card__img {
-      height: 240px;
-      background: no-repeat center / contain;
-   }
+  .card:hover {
+    box-shadow: var(--main-color) 0px 0px 16px;
+    transform: scale(1.1);
+  }
 
-   .card__text {
-      /* font-size: 12px; */
-      /* text-overflow: ellipsis;
+  .card__img {
+    height: 240px;
+    background: no-repeat center / contain;
+  }
+
+  .card__text {
+    /* font-size: 12px; */
+    /* text-overflow: ellipsis;
       white-space: nowrap;  
       overflow: hidden; */
-   }
+  }
 
-   .card__header {
-      position: relative;
-   }
-   .card__like {
-      position: absolute;
-      right: 0;
-      color: rgba(255,0,0,0.4);
-      font-size: 1.5rem;
-   }
-   .card__like:hover {
-      color: red;
-   }
-   .card__searchMatch {
-      text-decoration: underline;
-      font-weight: bold;
-      background: rgba(255, 0, 0, 0.3);
-   }
+  .card__header {
+    position: relative;
+  }
+  .card__like {
+    position: absolute;
+    right: 0;
+    color: rgba(255, 0, 0, 0.4);
+    font-size: 1.5rem;
+  }
+  .card__like:hover {
+    color: red;
+  }
+  .card__searchMatch {
+    text-decoration: underline;
+    font-weight: bold;
+    background: rgba(255, 0, 0, 0.3);
+  }
 }

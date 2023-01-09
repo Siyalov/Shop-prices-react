@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../Api/api";
 import { Product as ProductType } from "../Api/server.typings";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Chart from 'react-apexcharts';
+import Chart from "react-apexcharts";
 import {
   Container,
   Row,
@@ -12,19 +12,11 @@ import {
   Table,
   ButtonGroup,
   Button,
-  } from "react-bootstrap";
-import { shops } from '../settings';
+} from "react-bootstrap";
+import { shops } from "../settings";
 import { useTranslation } from "react-i18next";
 import WarningMark from "../components/WarningMark";
-
-function getLocaleFromList(list: Array<{ lang: string, value: string, isAuto: boolean }>, lang: string) {
-   for (const element of list) {
-      if (element.lang === lang) {
-         return element;
-      }
-   }
-   return null;
-}
+import { LocaleName, getLocaleFromList } from "../i18n/utils";
 
 async function loadProduct(
   productId: string,
@@ -50,29 +42,29 @@ export default function Product() {
 
   const { t, i18n } = useTranslation();
 
-  const [localizedName, setLocalizedName] = useState<{value?: string, lang?: string, isAuto: boolean}>();
+  const [localizedName, setLocalizedName] = useState<LocaleName>();
 
   const chartOptions: ApexCharts.ApexOptions = {
     chart: {
-      id: 'price-chart',
+      id: "price-chart",
       // foreColor: "#999",
     },
     // colors: ['#00E396', '#0090FF'],
     stroke: {
-      curve: 'smooth',
-      width: 3
+      curve: "smooth",
+      width: 3,
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     xaxis: {
       type: "datetime",
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
       labels: {
@@ -80,44 +72,54 @@ export default function Product() {
         // offsetY: -5
       },
       tooltip: {
-        enabled: true
-      }
+        enabled: true,
+      },
     },
     tooltip: {
       x: {
-        format: "dd MMM yyyy"
+        format: "dd MMM yyyy",
       },
       y: {
-        formatter(val, opts: {
-          seriesIndex: number,
-          dataPointIndex: number,
-          series: Array<Array<number>>,
-          w: any
-        }) {
-          console.log(val, opts);
-          let change = '0';
-          if (opts.dataPointIndex) {
-            change = (100 * (-1 + opts.series[opts.seriesIndex][opts.dataPointIndex] / opts.series[opts.seriesIndex][0])).toFixed(1);
+        formatter(
+          val,
+          opts: {
+            seriesIndex: number;
+            dataPointIndex: number;
+            series: Array<Array<number>>;
+            w: any;
           }
-          return val.toString() + (' (' + change + '%)');
-        }
-      }
+        ) {
+          console.log(val, opts);
+          let change = "0";
+          if (opts.dataPointIndex) {
+            change = (
+              100 *
+              (-1 +
+                opts.series[opts.seriesIndex][opts.dataPointIndex] /
+                  opts.series[opts.seriesIndex][0])
+            ).toFixed(1);
+          }
+          return val.toString() + (" (" + change + "%)");
+        },
+      },
     },
   };
 
-  const [chartData, setChartData] = useState<ApexAxisChartSeries | ApexNonAxisChartSeries>([]);
+  const [chartData, setChartData] = useState<
+    ApexAxisChartSeries | ApexNonAxisChartSeries
+  >([]);
 
   useEffect(() => {
     const shops: { [key: string]: Array<Array<number>> } = {};
     const graphs: ApexAxisChartSeries | ApexNonAxisChartSeries = [];
-    
-    for(const price of (product?.prices || [])) {
+
+    for (const price of product?.prices || []) {
       let name = price.shopName;
 
       if (!name) {
         // if name is not set, search in shops
         let currentShop;
-        for (const shop of (product?.shops || [])) {
+        for (const shop of product?.shops || []) {
           if (shop.id === price.shopId) {
             currentShop = shop;
             break;
@@ -129,10 +131,7 @@ export default function Product() {
       }
 
       if (!shops[name]) shops[name] = [];
-      shops[name].push([
-        new Date(price.updatedAt).getTime(),
-        price.price,
-      ]);
+      shops[name].push([ new Date(price.updatedAt).getTime(), price.price ]);
     }
 
     for (const shopName in shops) {
@@ -142,7 +141,7 @@ export default function Product() {
       };
       graphObject.data.push([
         new Date().getTime(),
-        graphObject.data[graphObject.data.length - 1][1]
+        graphObject.data[graphObject.data.length - 1][1],
       ]);
       // @ts-ignore TODO: fix
       graphs.push(graphObject);
@@ -152,10 +151,15 @@ export default function Product() {
   }, [product]);
 
   useEffect(() => {
-    setLocalizedName(getLocaleFromList(product?.names || [], i18n.language)
-     || getLocaleFromList(product?.names || [], 'en')
-     || { value: product?.name, isAuto: false });
-  }, [product, i18n.language])
+    setLocalizedName(
+      getLocaleFromList(product?.names || [], i18n.language) ||
+        getLocaleFromList(product?.names || [], "en") || {
+          value: product?.name || '',
+          isAuto: false,
+          lang: '',
+        }
+    );
+  }, [product, i18n.language]);
 
   // params.id
   useEffect(() => {
@@ -169,13 +173,22 @@ export default function Product() {
           <Col xs={12} lg={7}>
             <Row>
               <Col xs={12}>
-                <h1>{localizedName?.value} {localizedName?.isAuto ? <WarningMark text={t('autoTranslationWarning')} /> : ''}</h1>
+                <h1>
+                  {localizedName?.value}{" "}
+                  {localizedName?.isAuto ? (
+                    <WarningMark text={t("autoTranslationWarning")} />
+                  ) : (
+                    ""
+                  )}
+                </h1>
               </Col>
+
               <Col xs={12} md={6} lg={4}>
                 <Figure>
                   <Figure.Image src={api.getProductImageURL(product)} />
                 </Figure>
               </Col>
+              
               <Col xs={12} md={4}>
                 <Row>
                   <Col md={6}>
@@ -202,61 +215,66 @@ export default function Product() {
                   </Col>
                   <Col md={6}>
                     <Button size="sm" variant="warning">
-                      {t('addToCart')}
+                      {t("addToCart")}
                     </Button>
                   </Col>
                 </Row>
               </Col>
+
               <Col xs={12}>
-                <h2>{t('description')}</h2>
+                <h2>{t("description")}</h2>
                 {/* <p>{product.description}</p> */}
               </Col>
+
               <Col xs={12}>
-                <h2>{t('characteristics')}</h2>
+                <h2>{t("characteristics")}</h2>
                 <Table hover>
                   <tbody>
                     <tr>
-                      <th>{t('weight')}</th>
-                      <th>{product.measurements?.netWeight || 'coming soon...'} {t('unitKg')}</th>
+                      <th>{t("weight")}</th>
+                      <th>
+                        {product.measurements?.netWeight || "coming soon..."}{" "}
+                        {t("unitKg")}
+                      </th>
                     </tr>
                     <tr>
-                      <th>{t('barcode')}</th>
-                      <th>{product.barcode || 'coming soon...'}</th>
+                      <th>{t("barcode")}</th>
+                      <th>{product.barcode || "coming soon..."}</th>
                     </tr>
                     <tr>
-                      <th>{t('price')}</th>
+                      <th>{t("price")}</th>
                       <th>
                         <Table>
-                          {
-                            product.shops?.map((shop) => {
-                              if (!shops.includes(shop.id)) return '';
-                              const price = getLastShopPrice(product, shop.id);
-                              return <tr>
-                                <td className="col-2">{price?.price.toFixed(2)} €</td>
+                          {product.shops?.map((shop) => {
+                            if (!shops.includes(shop.id)) return "";
+                            const price = getLastShopPrice(product, shop.id);
+                            return (
+                              <tr>
+                                <td className="col-2">
+                                  {price?.price.toFixed(2)} €
+                                </td>
                                 <td className="col-8">{shop.name}</td>
-                                <td className="col-2">{((price?.price || 0) * cnt).toFixed(2)} €</td>
+                                <td className="col-2">
+                                  {((price?.price || 0) * cnt).toFixed(2)} €
+                                </td>
                               </tr>
-                            })
-                          }
+                            );
+                          })}
                         </Table>
                       </th>
-                      {/* <th>{product.price} ₽ за 100 грамм</th> */}
                     </tr>
                   </tbody>
                 </Table>
               </Col>
             </Row>
           </Col>
+
           <Col xs={12} lg={5}>
-            <Chart
-              type='line'
-              options={chartOptions}
-              series={chartData}
-            />
+            <Chart type="line" options={chartOptions} series={chartData} />
           </Col>
         </Row>
       ) : (
-        t('loadingPleaseWait')
+        t("loadingPleaseWait")
       )}
     </Container>
   );

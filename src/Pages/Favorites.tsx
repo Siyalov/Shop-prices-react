@@ -6,10 +6,10 @@ import Card from "../components/Card";
 import { shops } from "../settings";
 
 export default function Favorites() {
-  const { favorites /*addToCart*/ } = useContext(Context);
-  
+  const { favorites } = useContext(Context);
+
   const { t } = useTranslation();
-  
+
   const [likeProduct, setLikeProduct] = useState<ProductsResponse>();
   async function loadProducts() {
     const likeProduct = await api.getProducts({
@@ -29,14 +29,13 @@ export default function Favorites() {
 
   return (
     <>
-      <h1>{t('favoriteProducts')}</h1>
+      <h1>{t("favoriteProducts")}</h1>
       <div className="cards-container">
-        {favorites?.length ? 
-          likeProduct?.entries.map((product, i) => (
-            <Card key={product.id} product={product} searchQuery="" />
-          ))
-          : t('favoriteProductsIsEmpty')
-        }
+        {favorites?.length
+          ? likeProduct?.entries.map((product, i) => (
+              <Card key={product.id} product={product} searchQuery="" />
+            ))
+          : t("favoriteProductsIsEmpty")}
       </div>
     </>
   );
