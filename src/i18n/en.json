@@ -18,7 +18,8 @@
   "aboutProject": {
     "header": "Web-application Shop-prices.",
     "shortDescription": "Used to track the dynamics of price changes for approximately 40,000 products in two popular Finnish retail networks:",
-    "developers": "Developers:"
+    "developers": "Developers:",
+    "about": "About project"
   },
   "errors": {
     "registrationError": "Registration error!",

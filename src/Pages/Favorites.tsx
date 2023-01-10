@@ -29,7 +29,7 @@ export default function Favorites() {
 
   return (
     <>
-      <h1>{t("favoriteProducts")}</h1>
+      <h1 className="mt-10px text-center">{t("favoriteProducts")}</h1>
       <div className="cards-container">
         {favorites?.length
           ? likeProduct?.entries.map((product, i) => (

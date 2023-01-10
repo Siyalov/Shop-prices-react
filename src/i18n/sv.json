@@ -19,7 +19,8 @@
   "aboutProject": {
     "header": "Webbapplikation Shop-prices.",
     "shortDescription": "Används för att spåra dynamiken i prisändringar för cirka 40 000 produkter i två populära finska detaljhandelsnätverk:",
-    "developers": "Utvecklare:"
+    "developers": "Utvecklare:",
+    "about": "Om projektet"
   },
   "errors": {
     "registrationError": "Registreringsfel!",

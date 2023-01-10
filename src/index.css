@@ -52,8 +52,10 @@ button.btn {
   padding: 1rem;
 }
 
-
-.h1-text-center {
-  text-align: center;
+.mt-10px {
   margin-top: 10px;
+}
+
+.text-center {
+  text-align: center;
 }

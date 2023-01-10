@@ -19,7 +19,8 @@
   "aboutProject": {
     "header": "Ret-Aplikaj Shop-prices.",
     "shortDescription": "Uzita por spuri la dinamikon de prezaj ŝanĝoj por proksimume 40.000 produktoj en du popularaj finnaj podetalaj retoj:",
-    "developers": "Ellaborantoj:"
+    "developers": "Ellaborantoj:",
+    "about": "Pri projekto"
   },
   "errors": {
     "registrationError": "Registra eraro!",

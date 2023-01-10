@@ -7,7 +7,14 @@ export default function About() {
 
   return (
     <Container>
-      <Row style={{ textAlign: "center" }}>
+      <Row>
+        <Col>
+          <h1 className="mt-10px text-center">
+            {t('aboutProject.about')}
+          </h1>
+        </Col>
+      </Row>
+      <Row className="text-center">
         <Col xs={12}>
           <h3>{t("aboutProject.header")}</h3>
           <h4>{t("aboutProject.shortDescription")}</h4>
@@ -42,7 +49,7 @@ export default function About() {
           </a>
         </Col>
 
-        <Col xs={12} style={{ textAlign: "center" }}>
+        <Col xs={12} className="text-center">
           <h2>{t("aboutProject.developers")}</h2>
         </Col>
 

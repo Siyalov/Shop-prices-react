@@ -19,7 +19,8 @@
   "aboutProject": {
     "header": "Textus-application Shop-prices.",
     "shortDescription": "Ad track ad dynamics de pretio mutationes pro circiter 40,000 products in duas popularibus Fennica retail retiacula:",
-    "developers": "Developers:"
+    "developers": "Developers:",
+    "about": "De project"
   },
   "errors": {
     "registrationError": "Adnotatione error!",
