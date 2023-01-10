@@ -31,5 +31,14 @@
   "width": "Bredde",
   "height": "Højde",
   "length": "Længde",
-  "package": "Pakke"
+  "package": "Pakke",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "Kilogrammer",
+    "LTR": "Liter",
+    "MTR": "Meter",
+    "PCS": "Stykker"
+  }
 }

@@ -31,5 +31,14 @@
   "width": "Larĝo",
   "height": "Alteco",
   "length": "Longo",
-  "package": "Pako"
+  "package": "Pako",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "Kilogramoj",
+    "LTR": "Litroj",
+    "MTR": "Metroj",
+    "PCS": "Pecoj"
+  }
 }

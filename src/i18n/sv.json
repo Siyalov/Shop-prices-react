@@ -31,5 +31,14 @@
   "width": "Bredd",
   "height": "Höjd",
   "length": "Längd",
-  "package": "Paket"
+  "package": "Paket",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "Kilogram",
+    "LTR": "Liter",
+    "MTR": "Mätare",
+    "PCS": "Bitar"
+  }
 }

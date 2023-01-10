@@ -31,5 +31,14 @@
   "width": "Latitudo",
   "height": "Altitudo",
   "length": "Longitudo",
-  "package": "Sarcina"
+  "package": "Sarcina",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "kilograms",
+    "LTR": "Lits",
+    "MTR": "Metris",
+    "PCS": "pieces"
+  }
 }
