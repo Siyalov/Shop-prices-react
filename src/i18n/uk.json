@@ -27,5 +27,9 @@
   },
   "autoTranslationWarning": "Автоматичний переклад!",
   "authorization": "Авторизація",
-  "registration": "Реєстрація"
+  "registration": "Реєстрація",
+  "width": "Ширина",
+  "height": "Висота",
+  "length": "Довжина",
+  "package": "Пакет"
 }

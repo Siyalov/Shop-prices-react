@@ -27,5 +27,9 @@
   },
   "autoTranslationWarning": "Automatisk oversættelse!",
   "authorization": "Bemyndigelse",
-  "registration": "Registrering"
+  "registration": "Registrering",
+  "width": "Bredde",
+  "height": "Højde",
+  "length": "Længde",
+  "package": "Pakke"
 }

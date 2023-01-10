@@ -13,7 +13,6 @@
   "description": "Описание",
   "characteristics": "Характеристики",
   "weight": "Вес",
-  "unitKg": "кг",
   "barcode": "Штрихкод",
   "price": "Цена",
   "aboutProject": {
@@ -27,5 +26,18 @@
   },
   "autoTranslationWarning": "Автоматический перевод!",
   "authorization": "Авторизация",
-  "registration": "Регистрация"
+  "registration": "Регистрация",
+  "width": "Ширина",
+  "height": "Высота",
+  "length": "Длина",
+  "package": "Упаковка",
+  "unit": {
+    "default": "",
+    "kg": "кг",
+    "cm": "см",
+    "KGM": "Килограмм",
+    "LTR": "Литров",
+    "MTR": "Метров",
+    "PCS": "Штук"
+  }
 }

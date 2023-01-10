@@ -27,5 +27,18 @@
   },
   "autoTranslationWarning": "Automaattinen käännös!",
   "authorization": "Valtuutus",
-  "registration": "Rekisteröinti"
+  "registration": "Rekisteröinti",
+  "width": "Leveys",
+  "height": "Korkeus",
+  "length": "Pituus",
+  "package": "Paketti",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "Kilogrammit",
+    "LTR": "Litrat",
+    "MTR": "Metri",
+    "PCS": "Asia"
+  }
 }

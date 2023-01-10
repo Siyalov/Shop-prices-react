@@ -26,6 +26,10 @@
     "authError": "Errore auctoritatis!"
   },
   "autoTranslationWarning": "Automatic Translation!",
-  "authorization": "LICENTIA",
-  "registration": "Registration"
+  "authorization": "Licentia",
+  "registration": "Registration",
+  "width": "Latitudo",
+  "height": "Altitudo",
+  "length": "Longitudo",
+  "package": "Sarcina"
 }

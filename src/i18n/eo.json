@@ -27,5 +27,9 @@
   },
   "autoTranslationWarning": "Aŭtomata traduko!",
   "authorization": "Rajtigo",
-  "registration": "Registrado"
+  "registration": "Registrado",
+  "width": "Larĝo",
+  "height": "Alteco",
+  "length": "Longo",
+  "package": "Pako"
 }

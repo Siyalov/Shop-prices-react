@@ -13,7 +13,6 @@
   "description": "Description",
   "characteristics": "Characteristics",
   "weight": "Weight",
-  "unitKg": "kg",
   "barcode": "Barcode",
   "price": "Price",
   "aboutProject": {
@@ -27,5 +26,18 @@
   },
   "autoTranslationWarning": "Automatic translation!",
   "authorization": "Authorization",
-  "registration": "Registration"
+  "registration": "Registration",
+  "width": "Width",
+  "height": "Height",
+  "length": "Length",
+  "package": "Package",
+  "unit": {
+    "default": "",
+    "kg": "kg",
+    "cm": "cm",
+    "KGM": "Kilograms",
+    "LTR": "Liters",
+    "MTR": "Meters",
+    "PCS": "Pieces"
+  }
 }

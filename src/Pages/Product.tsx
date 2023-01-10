@@ -233,8 +233,27 @@ export default function Product() {
                       <th>{t("weight")}</th>
                       <th>
                         {product.measurements?.netWeight || "coming soon..."}{" "}
-                        {t("unitKg")}
+                        {t("unit.kg")}
                       </th>
+                    </tr>
+                    <tr>
+                      <th>{t("width")}</th>
+                      <th>{product.measurements?.width || "coming soon..."}{" "}
+                        {t("unit.cm")}</th>
+                    </tr>
+                    <tr>
+                      <th>{t("height")}</th>
+                      <th>{product.measurements?.height || "coming soon..."}{" "}
+                        {t("unit.cm")}</th>
+                    </tr>
+                    <tr>
+                      <th>{t("length")}</th>
+                      <th>{product.measurements?.length || "coming soon..."}{" "}
+                        {t("unit.cm")}</th>
+                    </tr>
+                    <tr>
+                      <th>{t("package")}</th>
+                      <th>{product.measurements?.contentSize || "coming soon..."} {t('unit.' + (product.measurements?.contentUnit || 'default'))}</th>
                     </tr>
                     <tr>
                       <th>{t("barcode")}</th>
