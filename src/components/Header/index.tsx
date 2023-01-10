@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import logo from "./img/Cittaslow_logo.png";
+import logo from "./img/Cittaslow_logo.webp";
 import "./style.css";
 import {
   BoxArrowDownLeft,
