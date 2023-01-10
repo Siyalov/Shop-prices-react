@@ -21,9 +21,11 @@
     "shortDescription": "Används för att spåra dynamiken i prisändringar för cirka 40 000 produkter i två populära finska detaljhandelsnätverk:",
     "developers": "Utvecklare:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Registreringsfel!",
     "authError": "Auktoriseringsfel!"
   },
-  "autoTranslationWarning": "Automatisk översättning!"
+  "autoTranslationWarning": "Automatisk översättning!",
+  "authorization": "Tillstånd",
+  "registration": "Registrering"
 }

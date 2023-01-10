@@ -21,9 +21,11 @@
     "shortDescription": "Uzita por spuri la dinamikon de prezaj ŝanĝoj por proksimume 40.000 produktoj en du popularaj finnaj podetalaj retoj:",
     "developers": "Ellaborantoj:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Registra eraro!",
     "authError": "Rajtiga eraro!"
   },
-  "autoTranslationWarning": "Aŭtomata traduko!"
+  "autoTranslationWarning": "Aŭtomata traduko!",
+  "authorization": "Rajtigo",
+  "registration": "Registrado"
 }

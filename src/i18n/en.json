@@ -21,9 +21,11 @@
     "shortDescription": "Used to track the dynamics of price changes for approximately 40,000 products in two popular Finnish retail networks:",
     "developers": "Developers:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Registration error!",
     "authError": "Authorization error!"
   },
-  "autoTranslationWarning": "Automatic translation!"
+  "autoTranslationWarning": "Automatic translation!",
+  "authorization": "Authorization",
+  "registration": "Registration"
 }

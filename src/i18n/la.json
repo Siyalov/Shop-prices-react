@@ -21,9 +21,11 @@
     "shortDescription": "Ad track ad dynamics de pretio mutationes pro circiter 40,000 products in duas popularibus Fennica retail retiacula:",
     "developers": "Developers:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Adnotatione error!",
     "authError": "Errore auctoritatis!"
   },
-  "autoTranslationWarning": "Automatic Translation!"
+  "autoTranslationWarning": "Automatic Translation!",
+  "authorization": "LICENTIA",
+  "registration": "Registration"
 }

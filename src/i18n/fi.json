@@ -25,5 +25,7 @@
     "registrationError": "Rekisteröintivirhe!",
     "authError": "Valtuutusvirhe!"
   },
-  "autoTranslationWarning": "Automaattinen käännös!"
+  "autoTranslationWarning": "Automaattinen käännös!",
+  "authorization": "Valtuutus",
+  "registration": "Rekisteröinti"
 }

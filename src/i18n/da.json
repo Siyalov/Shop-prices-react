@@ -21,9 +21,11 @@
     "shortDescription": "Bruges til at spore dynamikken i prisændringer for cirka 40.000 produkter i to populære finske detailnetværk:",
     "developers": "Udviklere:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Registreringsfejl!",
     "authError": "Autorisationsfejl!"
   },
-  "autoTranslationWarning": "Automatisk oversættelse!"
+  "autoTranslationWarning": "Automatisk oversættelse!",
+  "authorization": "Bemyndigelse",
+  "registration": "Registrering"
 }

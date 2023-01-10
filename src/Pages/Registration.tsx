@@ -44,6 +44,9 @@ export default function Registration() {
   
   return (
     <Container>
+      <Col className="h1-text-center">
+      <h1>{t("registration")}</h1>
+      </Col>
       <Row className="justify-content-md-center mt-4">
         <Col xs lg="5">
           <Card body>

@@ -1,5 +1,5 @@
 {
-  "signIn":"Увійти",
+  "signIn": "Увійти",
   "previousPage": "Назад",
   "nextPage": "Вперед",
   "userName": "Ім'я користувача",
@@ -21,9 +21,11 @@
     "shortDescription": "Дозволяє відстежувати динаміку змін у ціні приблизно на 40 000 товарів у двох популярних магазинах мережі у Фінляндії:",
     "developers": "Розробники:"
   },
-  "errors":{
+  "errors": {
     "registrationError": "Помилка реєстрації!",
     "authError": "Помилка авторизації!"
   },
-  "autoTranslationWarning": "Автоматичний переклад!"
+  "autoTranslationWarning": "Автоматичний переклад!",
+  "authorization": "Авторизація",
+  "registration": "Реєстрація"
 }

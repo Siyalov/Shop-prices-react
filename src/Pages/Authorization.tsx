@@ -38,6 +38,9 @@ export default function Authorization() {
 
   return (
     <Container>
+      <Row className="h1-text-center">
+      <h1>{t("authorization")}</h1>
+      </Row>
       <Row className="justify-content-md-center mt-4">
         <Col xs lg="5">
           <Card body>
