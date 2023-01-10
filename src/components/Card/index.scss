@@ -45,4 +45,9 @@
     font-weight: bold;
     background: rgba(255, 0, 0, 0.3);
   }
+  
+  a[href] {
+    text-decoration: none;
+    color: inherit;
+  }
 }
