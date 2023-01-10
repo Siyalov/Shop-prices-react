@@ -35,6 +35,7 @@ export interface ShopPricesContext {
   user: User | null;
 
   favorites: Array<string>;
+  setInFavorites: (id: string, likeState: boolean) => void
 }
 
 export const Context = React.createContext<ShopPricesContext>(
@@ -53,6 +54,12 @@ function App() {
   const [user, setUser] = useState<User | null>(null);
   const [favorites, setFavorites] = useState<Array<string>>([]);
   const navigate = useNavigate();
+
+  async function setInFavorites(id: string, likeState: boolean) {
+    await api.setLike(id, likeState);
+    const likes = await api.getLikedProductsId();
+    setFavorites(likes || []);
+  }
 
   async function loadProducts() {
     console.log(searchQuery);
@@ -116,6 +123,8 @@ function App() {
   useEffect(() => {
     if (user) {
       api.getLikedProductsId().then((likes) => setFavorites(likes || []));
+    } else {
+      setFavorites([]);
     }
   }, [user]);
 
@@ -133,6 +142,7 @@ function App() {
         setToken,
         user,
         favorites,
+        setInFavorites,
       }}
     >
       <Header />

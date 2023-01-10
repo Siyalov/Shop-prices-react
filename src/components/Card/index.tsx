@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../Api/api";
 import { Product } from "../../Api/server.typings";
@@ -19,10 +19,14 @@ export default function Card({
   product: Product;
   searchQuery: string;
 }) {
-  const { favorites } = useContext(Context);
+  const { favorites, setInFavorites } = useContext(Context);
   // const idx = product.name.toLowerCase().indexOf(searchQuery.toLowerCase());
   const [like, setLike] = useState(favorites.includes(product.id));
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    setLike(favorites.includes(product.id));
+  }, [favorites, product]);
 
   const localizedName = getLocaleFromList(product.names, i18n.language) ||
     getLocaleFromList(product.names, "en") || {
@@ -30,16 +34,17 @@ export default function Card({
       isAuto: false,
     };
 
+  function onLike(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    event.preventDefault();
+    setInFavorites(product.id, !like);
+  }
+
   return (
     <Link to={"/product/" + product.id} className="card">
       <div className="card__header">
         <span
           className="card__like"
-          onClick={(event) => {
-            event.preventDefault();
-            api.setLike(product.id, !like);
-            setLike(!like);
-          }}
+          onClick={onLike}
         >
           {like ? <ArrowThroughHeartFill /> : <ArrowThroughHeart />}
         </span>
