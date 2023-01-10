@@ -1,5 +1,5 @@
+import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import { shops } from "./settings";
 import { User } from "./Api/server.typings";
 import Header from "./components/Header";
@@ -52,6 +52,7 @@ function App() {
   );
   const [user, setUser] = useState<User | null>(null);
   const [favorites, setFavorites] = useState<Array<string>>([]);
+  const navigate = useNavigate();
 
   async function loadProducts() {
     console.log(searchQuery);
@@ -90,6 +91,7 @@ function App() {
   }, [page]);
 
   useEffect(() => {
+    navigate('/');
     if (page === 0) {
       loadProducts();
     }
