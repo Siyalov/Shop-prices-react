@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../Api/api";
 import { Product as ProductType } from "../Api/server.typings";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Chart from "react-apexcharts";
 import {
   Container,

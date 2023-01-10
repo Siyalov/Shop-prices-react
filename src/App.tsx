@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import Catalog from "./Pages/Catalog";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { shops } from "./settings";
-import "./index.css";
+import { User } from "./Api/server.typings";
 import Header from "./components/Header";
 import api, { ProductsResponse } from "./Api/api";
-import Product from "./Pages/Product";
-import Registration from "./Pages/Registration";
-import Authorization from "./Pages/Authorization";
-import { User } from "./Api/server.typings";
-import Favorites from "./Pages/Favorites";
-import About from "./Pages/About";
 import { useDebounce } from "./utils";
 import { supportedLanguages } from "./i18n/all";
+import Loading from "./components/Loading";
+
+// code below is same as ```import Catalog from "./Pages/Catalog";```
+// but uses lazy loading 
+const Catalog = lazy(() => import('./Pages/Catalog'));
+const Product = lazy(() => import('./Pages/Product'));
+const Registration = lazy(() => import('./Pages/Registration'));
+const Authorization = lazy(() => import('./Pages/Authorization'));
+const Favorites = lazy(() => import('./Pages/Favorites'));
+const About = lazy(() => import('./Pages/About'));
 
 export interface ShopPricesContext {
   products: ProductsResponse | undefined;
@@ -84,6 +86,7 @@ function App() {
 
   useEffect(() => {
     loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
@@ -91,6 +94,7 @@ function App() {
       loadProducts();
     }
     setPage(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchQuery]);
 
   useEffect(() => {
@@ -130,14 +134,16 @@ function App() {
       }}
     >
       <Header />
-      <Routes>
-        <Route path={"/"} element={<Catalog />} />
-        <Route path={"product/:id"} element={<Product />} />
-        <Route path={"favorites"} element={<Favorites />} />
-        <Route path={"register"} element={<Registration />} />
-        <Route path={"auth"} element={<Authorization />} />
-        <Route path={"about"} element={<About />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path={"/"} element={<Catalog />} />
+          <Route path={"product/:id"} element={<Product />} />
+          <Route path={"favorites"} element={<Favorites />} />
+          <Route path={"register"} element={<Registration />} />
+          <Route path={"auth"} element={<Authorization />} />
+          <Route path={"about"} element={<About />} />
+        </Routes>
+      </Suspense>
     </Context.Provider>
   );
 }

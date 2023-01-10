@@ -31,11 +31,6 @@ code {
   }
 }
 
-a[href] {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* bootstrap buttons */
 button.btn {
   width: max-content;

@@ -1,6 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import { supportedLanguages } from "./all";
+
 import en from "./en.json";
 import ru from "./ru.json";
 import fi from "./fi.json";
@@ -10,7 +12,6 @@ import da from "./da.json";
 import eo from "./eo.json";
 import la from "./la.json";
 
-import { supportedLanguages } from "./all";
 
 // the translations
 // (tip move them in a JSON file and import them,
