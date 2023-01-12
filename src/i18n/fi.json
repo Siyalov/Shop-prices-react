@@ -37,9 +37,28 @@
     "default": "",
     "kg": "kg",
     "cm": "cm",
-    "KGM": "Kilogrammit",
-    "LTR": "Litrat",
+    "KGM": "Kilo",
+    "LTR": "Litra",
     "MTR": "Metri",
-    "PCS": "Asia"
+    "PCS": "Kappale",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Kilo",
+    "KGM_other": "{{count}} Kiloa",
+    "LTR_one": "{{count}} Litra",
+    "LTR_other": "{{count}} Litraa",
+    "MTR_one": "{{count}} Metri",
+    "MTR_other": "{{count}} Metriä",
+    "PCS_one": "{{count}} Kappale",
+    "PCS_other": "{{count}} Kappaletta"
+  },
+  "languages": {
+    "en": "Englanti",
+    "ru": "Venäjän",
+    "fi": "Suomen",
+    "uk": "Ukrainan",
+    "sv": "Ruotsin",
+    "da": "Tanskan",
+    "eo": "Esperanto",
+    "la": "Latinan"
   }
 }

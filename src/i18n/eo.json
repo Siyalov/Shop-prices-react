@@ -40,6 +40,25 @@
     "KGM": "Kilogramoj",
     "LTR": "Litroj",
     "MTR": "Metroj",
-    "PCS": "Pecoj"
+    "PCS": "Pecoj",
+    "// Plurals": "",
+    "KGM_one": "{{count}} kilogramo",
+    "KGM_other": "{{count}} kilogramoj",
+    "LTR_one": "{{count}} Litro",
+    "LTR_other": "{{count}} Litroj",
+    "MTR_one": "{{count}} Metron",
+    "MTR_other": "{{count}} Metroj",
+    "PCS_one": "{{count}} Peco",
+    "PCS_other": "{{count}} Pecoj"
+  },
+  "languages": {
+    "en": "Angla",
+    "ru": "Rusa",
+    "fi": "Finna",
+    "uk": "Ukraina",
+    "sv": "Sveda",
+    "da": "Dana",
+    "eo": "Esperanto",
+    "la": "Latina"
   }
 }

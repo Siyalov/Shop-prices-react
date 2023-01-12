@@ -37,9 +37,28 @@
     "default": "",
     "kg": "kg",
     "cm": "cm",
-    "KGM": "kilograms",
+    "KGM": "Kilograms",
     "LTR": "Lits",
     "MTR": "Metris",
-    "PCS": "pieces"
+    "PCS": "Pieces",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Kilogram",
+    "KGM_other": "{{count}} Kilogramma",
+    "LTR_one": "{{count}} Liter",
+    "LTR_other": "{{count}} Liters",
+    "MTR_one": "{{count}} Metrum",
+    "MTR_other": "{{count}} Metris",
+    "PCS_one": "{{count}} Piece",
+    "PCS_other": "{{count}} Pieces"
+  },
+  "languages": {
+    "en": "Anglicus",
+    "ru": "Russian",
+    "fi": "Fennica",
+    "uk": "Ucraina",
+    "sv": "Swedish",
+    "da": "Danicum",
+    "eo": "Esperanto",
+    "la": "Latinus"
   }
 }

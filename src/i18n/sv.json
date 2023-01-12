@@ -40,6 +40,25 @@
     "KGM": "Kilogram",
     "LTR": "Liter",
     "MTR": "Mätare",
-    "PCS": "Bitar"
+    "PCS": "Bitar",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Kilo",
+    "KGM_other": "{{count}} Kilo",
+    "LTR_one": "{{count}} Liter",
+    "LTR_other": "{{count}} Liter",
+    "MTR_one": "{{count}} Meter",
+    "MTR_other": "{{count}} Meter",
+    "PCS_one": "{{count}} Stycken",
+    "PCS_other": "{{count}} Stycken"
+  },
+  "languages": {
+    "en": "Engelsk",
+    "ru": "Ryska",
+    "fi": "Finska",
+    "uk": "Ukrainska",
+    "sv": "Svenska",
+    "da": "Danska",
+    "eo": "Esperanto",
+    "la": "Latin"
   }
 }

@@ -12,16 +12,15 @@ export const supportedLanguages = [
   "eo",
 ] as const;
 
-// TODO: move to translation
-export const supportedLanguagesFullNames = {
+export const supportedLanguagesFullNamesNative = {
   en: "English",
-  fi: "Finnish",
-  sv: "Swedish",
-  ru: "Russian",
-  uk: "Ukraine",
+  fi: "Suomi",
+  sv: "Svenska",
+  ru: "Русский",
+  uk: "Українська",
   eo: "Esperanto",
-  da: "Danish",
-  la: "Latin",
-};
+  da: "Dansk",
+  la: "Latine",
+}
 
 export const flags = icons;

@@ -253,7 +253,7 @@ export default function Product() {
                     </tr>
                     <tr>
                       <th>{t("package")}</th>
-                      <th>{product.measurements?.contentSize || "coming soon..."} {t('unit.' + (product.measurements?.contentUnit || 'default'))}</th>
+                      <th>{t('unit.' + (product.measurements?.contentUnit || 'default'), { count: product.measurements?.contentSize })}</th>
                     </tr>
                     <tr>
                       <th>{t("barcode")}</th>

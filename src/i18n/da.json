@@ -40,6 +40,25 @@
     "KGM": "Kilogrammer",
     "LTR": "Liter",
     "MTR": "Meter",
-    "PCS": "Stykker"
+    "PCS": "Stykker",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Kilo",
+    "KGM_other": "{{count}} Kilo",
+    "LTR_one": "{{count}} Liter",
+    "LTR_other": "{{count}} Liter",
+    "MTR_one": "{{count}} Meter",
+    "MTR_other": "{{count}} Meter",
+    "PCS_one": "{{count}} Stykke",
+    "PCS_other": "{{count}} Stykker"
+  },
+  "languages": {
+    "en": "Engelsk",
+    "ru": "Russisk",
+    "fi": "Finsk",
+    "uk": "Ukrainsk",
+    "sv": "Svensk",
+    "da": "Dansk",
+    "eo": "Esperanto",
+    "la": "Latin"
   }
 }

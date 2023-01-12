@@ -5,12 +5,12 @@ import "./style.css";
 
 import {
   supportedLanguages,
-  supportedLanguagesFullNames,
   flags,
+  supportedLanguagesFullNamesNative,
 } from "../../i18n/all";
 
 export default function LanguagePicker() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   function switchSelectionBox() {
@@ -37,7 +37,7 @@ export default function LanguagePicker() {
                   }}
                 ></div>
                 <span className="language-list-item-name">
-                  {supportedLanguagesFullNames[lang]}
+                  {supportedLanguagesFullNamesNative[lang]} ({t(`languages.${lang}`)})
                 </span>
               </div>
             );

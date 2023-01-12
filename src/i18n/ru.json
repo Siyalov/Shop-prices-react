@@ -39,6 +39,33 @@
     "KGM": "Килограмм",
     "LTR": "Литров",
     "MTR": "Метров",
-    "PCS": "Штук"
+    "PCS": "Штук",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Килограмм",
+    "KGM_few": "{{count}} Килограмма",
+    "KGM_many": "{{count}} Килограммов",
+    "KGM_other": "{{count}} Килограммов",
+    "LTR_one": "{{count}} Литр",
+    "LTR_few": "{{count}} Литра",
+    "LTR_many": "{{count}} Литров",
+    "LTR_other": "{{count}} Литров",
+    "MTR_one": "{{count}} Метр",
+    "MTR_few": "{{count}} Метра",
+    "MTR_many": "{{count}} Метров",
+    "MTR_other": "{{count}} Метров",
+    "PCS_one": "{{count}} Штука",
+    "PCS_few": "{{count}} Штуки",
+    "PCS_many": "{{count}} Штук",
+    "PCS_other": "{{count}} Штук"
+  },
+  "languages": {
+    "en": "Английский",
+    "ru": "Русский",
+    "fi": "Финский",
+    "uk": "Украинский",
+    "sv": "Шведский",
+    "da": "Датский",
+    "eo": "Эсперанто",
+    "la": "Латинский"
   }
 }

@@ -39,6 +39,25 @@
     "KGM": "Kilograms",
     "LTR": "Liters",
     "MTR": "Meters",
-    "PCS": "Pieces"
+    "PCS": "Pieces",
+    "// Plurals": "",
+    "KGM_one": "{{count}} Kilogram",
+    "KGM_other": "{{count}} Kilograms",
+    "LTR_one": "{{count}} Liter",
+    "LTR_other": "{{count}} Liters",
+    "MTR_one": "{{count}} Meter",
+    "MTR_other": "{{count}} Meters",
+    "PCS_one": "{{count}} Piece",
+    "PCS_other": "{{count}} Pieces"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Russian",
+    "fi": "Finnish",
+    "uk": "Ukrainian",
+    "sv": "Swedish",
+    "da": "Danish",
+    "eo": "Esperanto",
+    "la": "Latin"
   }
 }
