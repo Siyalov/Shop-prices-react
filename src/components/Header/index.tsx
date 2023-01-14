@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "./img/Cittaslow_logo.webp";
 import "./style.css";
 import {
@@ -7,17 +7,23 @@ import {
   HeartFill,
   PersonPlusFill,
   InfoSquare,
+  UpcScan,
 } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
 import api from "../../Api/api";
 import LanguagePicker from "../LanguagePicker";
+import BarcodeScanner from "../BarcodeScanner";
 
 export default function Header() {
-  const { searchQuery, setSearchQuery, setToken, user, favorites } =
+  const { searchQuery, setSearchQuery, setToken, user, favorites, setPage } =
     useContext(Context);
+  const [scannerActive, setScannerActive] = useState(false);
+  const location = useLocation();
 
-  const searchChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const searchChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     setSearchQuery(e.target.value);
   };
 
@@ -26,16 +32,36 @@ export default function Header() {
     setToken("");
   }
 
+  function toggleScanner() {
+    setScannerActive(!scannerActive);
+  }
+
+  function onLogoClick() {
+    if (location.pathname === '/') {
+      setSearchQuery('');
+      setPage(0);
+    }
+  }
+
+  useEffect(() => {
+    setScannerActive(false);
+  }, [searchQuery]);
+
   return (
     <div className="header">
       <div>
-        <Link className="logo" to={"/"}>
+        <Link className="logo" to={"/"} onClick={onLogoClick}>
           <img src={logo} alt="Cittaslow" className="full-logo" />
         </Link>
       </div>
       <input type="search" value={searchQuery} onChange={searchChangeHandler} />
       <div className="buttons">
         <nav className="header-nav">
+          {
+            <Link to={""} onClick={toggleScanner}>
+              <UpcScan />
+            </Link>
+          }
           {user ? (
             <Link to={"/favorites"}>
               <HeartFill />
@@ -71,6 +97,16 @@ export default function Header() {
           </Link>
         </nav>
       </div>
+
+      {scannerActive ? (
+        <div className="barcode-popup-wrapper" onClick={() => setScannerActive(false)}>
+          <div className="barcode-popup" onClick={(e) => {e.preventDefault(); e.stopPropagation()}}>
+            <BarcodeScanner />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

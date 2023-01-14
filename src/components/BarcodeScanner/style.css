@@ -1,0 +1,9 @@
+#yourElement {
+  position: relative;
+}
+
+#yourElement .drawingBuffer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

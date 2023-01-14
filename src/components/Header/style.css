@@ -69,3 +69,28 @@
   top: 0px;
   transform: translate(-50%);
 }
+
+.header .barcode-popup-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999999999;
+  cursor: pointer;
+}
+
+.header .barcode-popup-wrapper .barcode-popup {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default;
+}
