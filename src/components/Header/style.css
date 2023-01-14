@@ -1,19 +1,19 @@
 .header {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 70px;
   background-color: var(--main-color);
   /* padding: 16px calc(50% - 500px); */
-  overflow: hidden;
 }
 .header > div {
-  height: 100%;
+  /* height: 100%; */
 }
 .logo img {
   margin: 4px;
-  height: calc(100% - 8px);
+  height: calc(70px - 8px);
 }
 .header input {
   min-width: 100px;
@@ -68,6 +68,22 @@
   position: absolute;
   top: 0px;
   transform: translate(-50%);
+}
+
+@media (max-width: 550px) {
+  .header {
+    height: 140px;
+  }
+  .header input {
+    max-width: calc(100% - 100px);
+    margin-bottom: 70px;
+    margin-right: 8px;
+  }
+  .buttons {
+    position: absolute;
+    right: 0;
+    top: 70px;
+  }
 }
 
 .header .barcode-popup-wrapper {

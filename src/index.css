@@ -31,6 +31,12 @@ code {
   }
 }
 
+@media (max-width: 450px) {
+  .cards-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 /* bootstrap buttons */
 button.btn {
   width: max-content;
@@ -58,4 +64,16 @@ button.btn {
 
 .text-center {
   text-align: center;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.pages-container {
+  
+  width: 100vw;
+  overflow-x: auto;
 }

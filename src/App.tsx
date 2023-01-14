@@ -146,16 +146,19 @@ function App() {
       }}
     >
       <Header />
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route path={"/"} element={<Catalog />} />
-          <Route path={"product/:id"} element={<Product />} />
-          <Route path={"favorites"} element={<Favorites />} />
-          <Route path={"register"} element={<Registration />} />
-          <Route path={"auth"} element={<Authorization />} />
-          <Route path={"about"} element={<About />} />
-        </Routes>
-      </Suspense>
+      <div className="pages-container">
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path={"/"} element={<Catalog />} />
+            <Route path={"product/:id"} element={<Product />} />
+            <Route path={"favorites"} element={<Favorites />} />
+            <Route path={"register"} element={<Registration />} />
+            <Route path={"auth"} element={<Authorization />} />
+            <Route path={"about"} element={<About />} />
+          </Routes>
+        </Suspense>
+      </div>
+      
     </Context.Provider>
   );
 }
