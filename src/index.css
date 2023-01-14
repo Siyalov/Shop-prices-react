@@ -73,7 +73,7 @@ button.btn {
 }
 
 .pages-container {
-  
   width: 100vw;
   overflow-x: auto;
+  overflow-y: hidden;
 }
