@@ -2,6 +2,12 @@
   position: relative;
 }
 
+#yourElement video,
+#yourElement canvas.drawingBuffer {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
 #yourElement .drawingBuffer {
   position: absolute;
   left: 0;
