@@ -30,7 +30,6 @@ function getLastShopPrice(product: ProductType, shopId: string) {
   shopPrices?.sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   );
-  console.log(shopPrices);
   return shopPrices?.[0];
 }
 
@@ -130,7 +129,7 @@ export default function Product() {
       }
 
       if (!shops[name]) shops[name] = [];
-      shops[name].push([ new Date(price.updatedAt).getTime(), price.price ]);
+      shops[name].push([new Date(price.updatedAt).getTime(), price.price]);
     }
 
     for (const shopName in shops) {
@@ -153,9 +152,9 @@ export default function Product() {
     setLocalizedName(
       getLocaleFromList(product?.names || [], i18n.language) ||
         getLocaleFromList(product?.names || [], "en") || {
-          value: product?.name || '',
+          value: product?.name || "",
           isAuto: false,
-          lang: '',
+          lang: "",
         }
     );
   }, [product, i18n.language]);
@@ -187,7 +186,7 @@ export default function Product() {
                   <Figure.Image src={api.getProductImageURL(product)} />
                 </Figure>
               </Col>
-              
+
               <Col xs={12} md={4}>
                 <Row>
                   <Col md={6}>
@@ -238,22 +237,34 @@ export default function Product() {
                     </tr>
                     <tr>
                       <th>{t("width")}</th>
-                      <th>{product.measurements?.width || "coming soon..."}{" "}
-                        {t("unit.cm")}</th>
+                      <th>
+                        {product.measurements?.width || "coming soon..."}{" "}
+                        {t("unit.cm")}
+                      </th>
                     </tr>
                     <tr>
                       <th>{t("height")}</th>
-                      <th>{product.measurements?.height || "coming soon..."}{" "}
-                        {t("unit.cm")}</th>
+                      <th>
+                        {product.measurements?.height || "coming soon..."}{" "}
+                        {t("unit.cm")}
+                      </th>
                     </tr>
                     <tr>
                       <th>{t("length")}</th>
-                      <th>{product.measurements?.length || "coming soon..."}{" "}
-                        {t("unit.cm")}</th>
+                      <th>
+                        {product.measurements?.length || "coming soon..."}{" "}
+                        {t("unit.cm")}
+                      </th>
                     </tr>
                     <tr>
                       <th>{t("package")}</th>
-                      <th>{t('unit.' + (product.measurements?.contentUnit || 'default'), { count: product.measurements?.contentSize })}</th>
+                      <th>
+                        {t(
+                          "unit." +
+                            (product.measurements?.contentUnit || "default"),
+                          { count: product.measurements?.contentSize }
+                        )}
+                      </th>
                     </tr>
                     <tr>
                       <th>{t("barcode")}</th>
@@ -263,21 +274,23 @@ export default function Product() {
                       <th>{t("price")}</th>
                       <th>
                         <Table>
-                          {product.shops?.map((shop) => {
-                            if (!shops.includes(shop.id)) return "";
-                            const price = getLastShopPrice(product, shop.id);
-                            return (
-                              <tr>
-                                <td className="col-2">
-                                  {price?.price.toFixed(2)} €
-                                </td>
-                                <td className="col-8">{shop.name}</td>
-                                <td className="col-2">
-                                  {((price?.price || 0) * cnt).toFixed(2)} €
-                                </td>
-                              </tr>
-                            );
-                          })}
+                          <tbody>
+                            {product.shops?.map((shop) => {
+                              if (!shops.includes(shop.id)) return "";
+                              const price = getLastShopPrice(product, shop.id);
+                              return (
+                                <tr>
+                                  <td className="col-2">
+                                    {price?.price.toFixed(2)} €
+                                  </td>
+                                  <td className="col-8">{shop.name}</td>
+                                  <td className="col-2">
+                                    {((price?.price || 0) * cnt).toFixed(2)} €
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
                         </Table>
                       </th>
                     </tr>

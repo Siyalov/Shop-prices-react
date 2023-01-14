@@ -62,7 +62,6 @@ function App() {
   }
 
   async function loadProducts() {
-    console.log(searchQuery);
     let data: ProductsResponse | null;
     setProducts(undefined);
     if (searchQuery) {

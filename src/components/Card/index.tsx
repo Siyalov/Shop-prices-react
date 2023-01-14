@@ -57,7 +57,7 @@ export default function Card({
       ></div>
       <div className="card__price">
         {product.prices?.map((price, i) => (
-          <div className="card__price2">
+          <div className="card__price2" key={price.id}>
             {price.price.toFixed(2)} € {price.shopName.split(" ")[0]}
           </div>
         ))}
