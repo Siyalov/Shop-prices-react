@@ -97,11 +97,16 @@ function App() {
   }, [page]);
 
   useEffect(() => {
+    const timeSinceLoad = Date.now() - window.performance.timing.domContentLoadedEventEnd;
+    if (timeSinceLoad > 1000) {
+      // navigate only if time since page load greater than 1 second (because of react behavior)
     navigate('/');
+    }
     if (page === 0) {
       loadProducts();
-    }
+    } else {
     setPage(0);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchQuery]);
 
