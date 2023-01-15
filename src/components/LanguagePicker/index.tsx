@@ -28,6 +28,7 @@ export default function LanguagePicker() {
                   "clickable language-list-item" +
                   (i18n.language === lang ? " active" : "")
                 }
+                key={lang}
                 onClick={() => i18n.changeLanguage(lang)}
               >
                 <div
@@ -51,7 +52,6 @@ export default function LanguagePicker() {
         <span>
           <img
             className="header-flag"
-            height={20}
             src={
               // @ts-ignore TODO: fix
               flags[i18n.language] || ""

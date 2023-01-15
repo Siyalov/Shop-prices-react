@@ -9,9 +9,10 @@
   padding: 0;
   position: absolute;
   right: 2rem;
-  top: 70px;
+  top: 4rem;
   z-index: 999;
-  box-shadow: 3px 3px 15px #ccc;
+  box-shadow: 0.25rem 0.25rem 1rem #ccc;
+  width: 100%;
 }
 
 .language-list-item {
@@ -36,10 +37,10 @@
 }
 
 .language-list-item .flag {
-  width: 24px;
+  width: 2rem;
   background-repeat: no-repeat;
   border-radius: 10px;
-  height: 18px;
+  height: 1.5rem;
   background-size: cover;
 }
 

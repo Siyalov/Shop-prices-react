@@ -19,11 +19,11 @@ code {
 .cards-container {
   max-width: 1200px;
   margin: auto;
-  padding: 30px;
-  padding-top: 8px;
+  padding: 1.5rem;
+  padding-top: 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 1.5rem;
 }
 @media (max-width: 960px) {
   .cards-container {
@@ -41,8 +41,8 @@ code {
 button.btn {
   width: max-content;
   border: none;
-  border-radius: 30px;
-  padding: 8px 12px;
+  border-radius: 2rem;
+  padding: 0.5rem;
   font-weight: 700;
   background-color: var(--main-color);
   height: max-content;
@@ -51,7 +51,7 @@ button.btn {
 
 .developer-card {
   text-align: center;
-  border-radius: 16px;
+  border-radius: 1rem;
   box-shadow: #000 0 0 4px;
   margin: auto;
   margin-bottom: 1rem;
