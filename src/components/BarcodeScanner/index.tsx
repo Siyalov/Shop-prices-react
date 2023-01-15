@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 // @ts-ignore TODO: typings
 import Quagga from "quagga";
 import './style.css';
@@ -44,97 +44,101 @@ interface Done {
 }
 
 export default function BarcodeScanner() {
-  const { setSearchQuery } = useContext(Context);
-
+  const { setSearchQuery, barcodeScannerOpened } = useContext(Context);
+  const [init, setInit] = useState(false);
+  
   useEffect(() => {
-    Quagga.init(
-      {
-        inputStream: {
-          name: "Live",
-          type: "LiveStream",
-          constraints: {
-            width: 800,
-            height: 600,
-            facingMode: "environment",
+    if (barcodeScannerOpened && !init) {
+      // init and start barcode scanner
+      Quagga.init(
+        {
+          inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            constraints: {
+              width: 800,
+              height: 600,
+              facingMode: "environment",
+            },
+            target: document.querySelector("#yourElement"), // Or '#yourElement' (optional)
           },
-          target: document.querySelector("#yourElement"), // Or '#yourElement' (optional)
+          locator: {
+            halfSample: true,
+            patchSize: "medium",
+          },
+          numOfWorkers: 4,
+          decoder: {
+            readers: ["ean_reader"],
+          },
+          locate: true,
         },
-        locator: {
-          halfSample: true,
-          patchSize: "medium",
-        },
-        numOfWorkers: 4,
-        decoder: {
-          readers: ["ean_reader"],
-        },
-        locate: true,
-      },
-      function (err: Error) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        console.log("Initialization finished. Ready to start");
-        Quagga.start();
-
-        Quagga.onDetected((data: Done) => {
-          Quagga.stop();
-          console.log(data.codeResult.code);
-          setSearchQuery(data.codeResult.code);
-        });
-
-        Quagga.onProcessed((result: any) => {
-          var drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
-
-          if (result) {
-            if (result.boxes) {
-              drawingCtx.clearRect(
-                0,
-                0,
-                parseInt(drawingCanvas.getAttribute("width")),
-                parseInt(drawingCanvas.getAttribute("height"))
-              );
-              result.boxes
-                .filter(function (box: any) {
-                  return box !== result.box;
-                })
-                .forEach(function (box: any) {
-                  Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
-                    color: "green",
-                    lineWidth: 2,
-                  });
-                });
-            }
-
-            if (result.box) {
-              Quagga.ImageDebug.drawPath(
-                result.box,
-                { x: 0, y: 1 },
-                drawingCtx,
-                { color: "#00F", lineWidth: 2 }
-              );
-            }
-
-            if (result.codeResult && result.codeResult.code) {
-              Quagga.ImageDebug.drawPath(
-                result.line,
-                { x: "x", y: "y" },
-                drawingCtx,
-                { color: "red", lineWidth: 3 }
-              );
-            }
+        function (err: Error) {
+          if (err) {
+            console.log(err);
+            return;
           }
-        });
-      }
-    );
-
-    // TODO: fix camera stop on unmount
-    return () => {
-      console.log('stop');
+          console.log("Initialization finished. Ready to start");
+          Quagga.start();
+  
+          Quagga.onDetected((data: Done) => {
+            // barcode detected!
+            // Quagga.stop();
+            console.log(data.codeResult.code);
+            setSearchQuery(data.codeResult.code);
+          });
+  
+          Quagga.onProcessed((result: any) => {
+            const drawingCtx = Quagga.canvas.ctx.overlay;
+            const drawingCanvas = Quagga.canvas.dom.overlay;
+  
+            if (result) {
+              if (result.boxes) {
+                drawingCtx.clearRect(
+                  0,
+                  0,
+                  parseInt(drawingCanvas.getAttribute("width")),
+                  parseInt(drawingCanvas.getAttribute("height"))
+                );
+                result.boxes
+                  .filter(function (box: any) {
+                    return box !== result.box;
+                  })
+                  .forEach(function (box: any) {
+                    Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
+                      color: "green",
+                      lineWidth: 2,
+                    });
+                  });
+              }
+  
+              if (result.box) {
+                Quagga.ImageDebug.drawPath(
+                  result.box,
+                  { x: 0, y: 1 },
+                  drawingCtx,
+                  { color: "#00F", lineWidth: 2 }
+                );
+              }
+  
+              if (result.codeResult && result.codeResult.code) {
+                Quagga.ImageDebug.drawPath(
+                  result.line,
+                  { x: "x", y: "y" },
+                  drawingCtx,
+                  { color: "red", lineWidth: 3 }
+                );
+              }
+            }
+          });
+        }
+      );
+      setInit(true);
+    } else if (!barcodeScannerOpened && init) {
+      // stop barcode scanner
       Quagga.stop();
+      setInit(false);
     }
-  }, []);
+  }, [barcodeScannerOpened]);
 
   return <div id="yourElement"></div>;
 }

@@ -35,7 +35,9 @@ export interface ShopPricesContext {
   user: User | null;
 
   favorites: Array<string>;
-  setInFavorites: (id: string, likeState: boolean) => void
+  setInFavorites: (id: string, likeState: boolean) => void;
+  barcodeScannerOpened: boolean;
+  setBarcodeScannerOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Context = React.createContext<ShopPricesContext>(
@@ -53,6 +55,7 @@ function App() {
   );
   const [user, setUser] = useState<User | null>(null);
   const [favorites, setFavorites] = useState<Array<string>>([]);
+  const [barcodeScannerOpened, setBarcodeScannerOpened] = useState<boolean>(false);
   const navigate = useNavigate();
 
   async function setInFavorites(id: string, likeState: boolean) {
@@ -100,12 +103,12 @@ function App() {
     const timeSinceLoad = Date.now() - window.performance.timing.domContentLoadedEventEnd;
     if (timeSinceLoad > 1000) {
       // navigate only if time since page load greater than 1 second (because of react behavior)
-    navigate('/');
+      navigate('/');
     }
     if (page === 0) {
       loadProducts();
     } else {
-    setPage(0);
+      setPage(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchQuery]);
@@ -147,6 +150,8 @@ function App() {
         user,
         favorites,
         setInFavorites,
+        barcodeScannerOpened,
+        setBarcodeScannerOpened,
       }}
     >
       <Header />

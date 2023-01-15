@@ -16,9 +16,16 @@ import LanguagePicker from "../LanguagePicker";
 import BarcodeScanner from "../BarcodeScanner";
 
 export default function Header() {
-  const { searchQuery, setSearchQuery, setToken, user, favorites, setPage } =
-    useContext(Context);
-  const [scannerActive, setScannerActive] = useState(false);
+  const {
+    searchQuery,
+    setSearchQuery,
+    setToken,
+    user,
+    favorites,
+    setPage,
+    barcodeScannerOpened,
+    setBarcodeScannerOpened,
+  } = useContext(Context);
   const location = useLocation();
 
   const searchChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
@@ -33,7 +40,7 @@ export default function Header() {
   }
 
   function toggleScanner() {
-    setScannerActive(!scannerActive);
+    setBarcodeScannerOpened(!barcodeScannerOpened);
   }
 
   function onLogoClick() {
@@ -43,8 +50,12 @@ export default function Header() {
     }
   }
 
+  function closeBarcodeScanner() {
+    setBarcodeScannerOpened(false);
+  }
+
   useEffect(() => {
-    setScannerActive(false);
+    closeBarcodeScanner();
   }, [searchQuery]);
 
   return (
@@ -98,15 +109,15 @@ export default function Header() {
         </nav>
       </div>
 
-      {scannerActive ? (
-        <div className="barcode-popup-wrapper" onClick={() => setScannerActive(false)}>
-          <div className="barcode-popup" onClick={(e) => {e.preventDefault(); e.stopPropagation()}}>
-            <BarcodeScanner />
-          </div>
+      <div
+        style={{ display: barcodeScannerOpened ? 'block' : 'none' }}
+        className="barcode-popup-wrapper"
+        onClick={closeBarcodeScanner}
+      >
+        <div className="barcode-popup" onClick={(e) => {e.preventDefault(); e.stopPropagation()}}>
+          <BarcodeScanner />
         </div>
-      ) : (
-        ""
-      )}
+      </div>
     </div>
   );
 }
