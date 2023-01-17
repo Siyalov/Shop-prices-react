@@ -53,8 +53,7 @@ button.btn {
   text-align: center;
   border-radius: 1rem;
   box-shadow: #000 0 0 4px;
-  margin: auto;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
   padding: 1rem;
 }
 
