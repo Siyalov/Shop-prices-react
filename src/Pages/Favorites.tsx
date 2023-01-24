@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import api, { ProductsResponse } from "../Api/api";
 import { Context } from "../App";
 import Card from "../components/Card";
+import { supportedLanguages } from "../i18n/all";
 import { shops } from "../settings";
 
 export default function Favorites() {
@@ -16,6 +17,7 @@ export default function Favorites() {
       pageSize: 1000,
       onlyLiked: true,
       shopId: shops,
+      langs: supportedLanguages.join(','),
     });
     console.log(likeProduct);
     if (likeProduct) {
